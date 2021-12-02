@@ -26,7 +26,7 @@ function makeCss() {
 }
 
 function makePage() {
-	return gulp.src("./src/pages/*.html").pipe(ejs()).pipe(gulp.dest("./www"));
+	return gulp.src("./www/pages/*.html").pipe(ejs()).pipe(gulp.dest("./www"));
 }
 
 function watch() {
@@ -34,7 +34,7 @@ function watch() {
 		server: "./www",
 	});
 
-	gulp.watch("./src/**/*.html", makePage);
+	gulp.watch("./www/pages/*.html", makePage);
 	gulp.watch("./src/**/*.scss", makeCss);
 	gulp.watch("./www").on("change", browserSync.reload);
 }
