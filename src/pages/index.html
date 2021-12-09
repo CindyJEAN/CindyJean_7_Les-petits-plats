@@ -24,9 +24,11 @@
 		<header>
 			<img src="content/logo.svg" alt="logo les petit plats" />
 		</header>
-		<%- include('../../www/components/searchBar.html'); %>
 
-		<h1>test1</h1>
-		<p>za</p>
+		<main>
+			<%- include('../../www/components/searchBar.html'); %>
+			<%- include('../../www/components/recipe.html', {"name" : "Limonade de Coco", "time" : "60" }); %>
+			
+		</main>
 	</body>
 </html>

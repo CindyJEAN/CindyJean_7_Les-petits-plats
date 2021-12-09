@@ -1,0 +1,13 @@
+<article>
+	<div class="photo"></div>
+	<h2><%- name %></h2>
+	<p class="time"><%- time %> min</p>
+	<div class="ingredientsContainer">
+    <%- include('./ingredient.html', {ingredient: "Lait de coco", quantity: "400" , unit: "ml" }); %>
+    <%- include('./ingredient.html', {ingredient: "Jus de citron", quantity: "2" , unit: "cuillères à soupe" }); %>
+    <%- include('./ingredient.html', {ingredient: "Crème de coco", quantity: "2" , unit: "cuillères à soupe" }); %>
+    <%- include('./ingredient.html', {ingredient: "Crème de coco", quantity: "2" , unit: "cuillères à soupe" }); %>
+	</div>
+  <p class="steps">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. 
+    Mixer jusqu'à avoir la consistence désirée</p>
+</article>
