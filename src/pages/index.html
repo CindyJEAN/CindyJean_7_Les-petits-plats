@@ -26,7 +26,15 @@
 		</header>
 
 		<main>
+
 			<%- include('../../www/components/searchBar.html'); %>
+			<div class="filtersContainer">
+			<%- include('../../www/components/filter.html', { "name": "coco"}); %>
+		</div>
+			<%- include('../../www/components/recipe.html', {"name" : "Limonade de Coco", "time" : "60" }); %>
+			<%- include('../../www/components/recipe.html', {"name" : "Limonade de Coco", "time" : "60" }); %>
+			<%- include('../../www/components/recipe.html', {"name" : "Limonade de Coco", "time" : "60" }); %>
+			<%- include('../../www/components/recipe.html', {"name" : "Limonade de Coco", "time" : "60" }); %>
 			<%- include('../../www/components/recipe.html', {"name" : "Limonade de Coco", "time" : "60" }); %>
 			
 		</main>
