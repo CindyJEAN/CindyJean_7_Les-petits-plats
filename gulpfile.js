@@ -12,7 +12,6 @@ const autoprefixer = require("gulp-autoprefixer");
 
 function makeCss() {
 	return gulp
-		// .src(["./src/components/base.scss", "./src/**/*.scss"])
 		.src(["./src/style/base.scss", "./src/**/*.scss"])
 		.pipe(concat("style.css"))
 		.pipe(sass().on("error", sass.logError))
@@ -26,7 +25,7 @@ function makeCss() {
 }
 
 function makePage() {
-	return gulp.src("./www/pages/*.html").pipe(ejs()).pipe(gulp.dest("./www"));
+	return gulp.src("./src/pages/*.html").pipe(ejs()).pipe(gulp.dest("./www"));
 }
 
 function watch() {
@@ -34,7 +33,7 @@ function watch() {
 		server: "./www",
 	});
 
-	gulp.watch("./www/pages/*.html", makePage);
+	gulp.watch(["./src/pages/*.html", "./www/components/*.html"], makePage);
 	gulp.watch("./src/**/*.scss", makeCss);
 	gulp.watch("./www").on("change", browserSync.reload);
 }

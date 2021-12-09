@@ -1,15 +1,19 @@
-$colorIngredient: #3282F7;
-$colorAppliance: #68D9A4;
-$colorIngredientUstensil: #ED6454;
-$grey: #E7E7E7;
-$darkGrey: #C7BEBE;
-
-
+$colorIngredient: #3282f7;
+$colorAppliance: #68d9a4;
+$colorIngredientUstensil: #ed6454;
+$grey: #e7e7e7;
+$darkGrey: #c7bebe;
 
 body {
-  font-family: 'Lato', sans-serif;
+	max-width: 1280px;
+  width: 90vw;
+	margin: auto;
+
+	& * {
+		font-family: "Lato", sans-serif;
+	}
 }
 
 h1 {
-  font-weight: bold;
+	font-weight: bold;
 }
