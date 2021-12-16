@@ -21,6 +21,8 @@
 		<title>Les Petits Plats</title>
 	</head>
 	<body>
+		<script src="dropdown.js" defer></script>
+
 		<header>
 			<img src="content/logo.svg" alt="logo les petit plats" />
 		</header>
@@ -28,9 +30,16 @@
 		<main>
 
 			<%- include('../../www/components/searchBar.html'); %>
-			<div class="filtersContainer">
-			<%- include('../../www/components/filter.html', { "name": "coco"}); %>
-		</div>
+			<div class="container">
+				<%- include('../../www/components/filter.html', { "name": "coco"}); %>
+				<%- include('../../www/components/filter.html', { "name": "citron"}); %>
+				<%- include('../../www/components/filter.html', { "name": "poisson"}); %>
+			</div>
+			<form class="container">
+				<%- include('../../www/components/dropdown.html', { "name": "Ingrédients"}); %>
+				<%- include('../../www/components/dropdown.html', { "name": "Appareil"}); %>
+				<%- include('../../www/components/dropdown.html', { "name": "Ustensiles"}); %>
+			</form>
 			<%- include('../../www/components/recipe.html', {"name" : "Limonade de Coco", "time" : "60" }); %>
 			<%- include('../../www/components/recipe.html', {"name" : "Limonade de Coco", "time" : "60" }); %>
 			<%- include('../../www/components/recipe.html', {"name" : "Limonade de Coco", "time" : "60" }); %>

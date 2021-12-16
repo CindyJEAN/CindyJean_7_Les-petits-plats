@@ -1,4 +1,4 @@
-article {
+article.recipe {
 	display: grid;
 	// width: 100%;
   width: 30%;
@@ -11,7 +11,7 @@ article {
 		"photo photo photo"
 		"name name time"
 		"ingredients steps steps";
-	grid-template-columns: 160px auto 120px;
+	grid-template-columns: 40% auto 120px;
 	padding-bottom: 1rem;
 
 	.photo {
@@ -31,7 +31,7 @@ article {
 	h3 {
 		font-size: 0.75rem;
 		font-weight: bold;
-		padding-right: 0.2rem;
+		padding-right: 5px;
 	}
 
 	.time {
@@ -56,12 +56,12 @@ article {
       padding-left: 1rem;
       padding-right: 1rem;
       overflow-y: auto;
+			margin: 0;
     }
 	}
 
 	.ingredientsContainer {
 		padding-left: 1rem;
-		// padding-bottom: 1rem;
 		overflow-y: auto;
 
 		.ingredient {
@@ -69,7 +69,6 @@ article {
 			flex-wrap: wrap;
 			height: fit-content;
       padding-bottom: 0.2rem;
-
 
 			h3,
 			p {

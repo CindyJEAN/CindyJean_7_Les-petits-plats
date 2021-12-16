@@ -25,6 +25,12 @@ main {
 	column-gap: 5%;
 }
 
-.filtersContainer {
+button, input {
+	border: none;
+	background-color: transparent;
+}
+
+.container {
 	width: 100%;
+	display: flex;
 }

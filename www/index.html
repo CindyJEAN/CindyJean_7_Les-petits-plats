@@ -21,13 +21,15 @@
 		<title>Les Petits Plats</title>
 	</head>
 	<body>
+		<script src="dropdown.js" defer></script>
+
 		<header>
 			<img src="content/logo.svg" alt="logo les petit plats" />
 		</header>
 
 		<main>
 
-			<form>
+			<form class="searchBar">
 	<label for="recipeSearch" hidden></label>
 	<input
 		type="search"
@@ -38,10 +40,41 @@
   <button></button>
 </form>
 
-			<div class="filtersContainer">
-			<button class="filter">coco</button>
-		</div>
-			<article>
+			<div class="container">
+				<button class="filter">coco</button>
+				<button class="filter">citron</button>
+				<button class="filter">poisson</button>
+			</div>
+			<form class="container">
+				<!-- <fieldset> -->
+<!-- <div> -->
+<label for=Ingrédients
+  Ingrédients class="hidden">
+</label>
+<input type="text" placeholder=Ingrédients name=Ingrédients id=Ingrédients class="dropdown-btn" />
+
+<!-- </div> -->
+<!-- </fieldset> -->
+				<!-- <fieldset> -->
+<!-- <div> -->
+<label for=Appareil
+  Appareil class="hidden">
+</label>
+<input type="text" placeholder=Appareil name=Appareil id=Appareil class="dropdown-btn" />
+
+<!-- </div> -->
+<!-- </fieldset> -->
+				<!-- <fieldset> -->
+<!-- <div> -->
+<label for=Ustensiles
+  Ustensiles class="hidden">
+</label>
+<input type="text" placeholder=Ustensiles name=Ustensiles id=Ustensiles class="dropdown-btn" />
+
+<!-- </div> -->
+<!-- </fieldset> -->
+			</form>
+			<article class="recipe">
 	<div class="photo"></div>
 	<h2>Limonade de Coco</h2>
 	<p class="time">60 min</p>
@@ -71,7 +104,7 @@
     Mixer jusqu'à avoir la consistence désirée</p>
 </article>
 
-			<article>
+			<article class="recipe">
 	<div class="photo"></div>
 	<h2>Limonade de Coco</h2>
 	<p class="time">60 min</p>
@@ -101,7 +134,7 @@
     Mixer jusqu'à avoir la consistence désirée</p>
 </article>
 
-			<article>
+			<article class="recipe">
 	<div class="photo"></div>
 	<h2>Limonade de Coco</h2>
 	<p class="time">60 min</p>
@@ -131,7 +164,7 @@
     Mixer jusqu'à avoir la consistence désirée</p>
 </article>
 
-			<article>
+			<article class="recipe">
 	<div class="photo"></div>
 	<h2>Limonade de Coco</h2>
 	<p class="time">60 min</p>
@@ -161,7 +194,7 @@
     Mixer jusqu'à avoir la consistence désirée</p>
 </article>
 
-			<article>
+			<article class="recipe">
 	<div class="photo"></div>
 	<h2>Limonade de Coco</h2>
 	<p class="time">60 min</p>
