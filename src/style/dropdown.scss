@@ -1,37 +1,52 @@
 .hidden {
-  border: 0;
-  clip: rect(0,0,0,0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
 }
 
-input.dropdown-btn {
+.inputDropdown {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	color: white;
-  font-size: 1.125rem;
+	padding: 0;
+
 	background-color: $colorAppliance;
-	padding: 15px;
 	border-radius: 5px;
 	cursor: pointer;
-  margin-right: 1rem;
-  margin-bottom: 2rem;
+	margin-right: 1rem;
+	margin-bottom: 2rem;
 
-	&::after {
-		content: "\f078";
-		font-family: "Font Awesome 5 Free";
-		font-weight: bold;
+	* {
+		color: white;
+    font-size: 1.125rem;
 	}
 
-  &::placeholder {
-    color: white;
-  }
+	input {
+		padding: 20px 15px;
+
+		&::placeholder {
+			// font-size: 1.125rem;
+			color: white;
+		}
+		&:focus-visible {
+      outline: none;
+		}
+	}
+
+	button {
+		width: 3rem;
+		&::after {
+			content: "\f078";
+			font-family: "Font Awesome 5 Free";
+			font-weight: bold;
+		}
+	}
 }
 
 // .dropdownContainer {
