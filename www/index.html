@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
-			rel="stylesheet"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-			integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"
-		/>
-		<link rel="stylesheet" href="./css/style.css" />
-		<title>Les Petits Plats</title>
-	</head>
-	<body>
-		<script src="dropdown.js" defer></script>
 
-		<header>
-			<img src="content/logo.svg" alt="logo les petit plats" />
-		</header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <title>Les Petits Plats</title>
+</head>
 
-		<main>
+<body>
+  <script src="dropdown.js" defer></script>
 
-			<form class="searchBar">
+  <header>
+    <img src="content/logo.svg" alt="logo les petit plats" />
+  </header>
+
+  <main>
+
+    <form class="searchBar">
 	<label for="recipeSearch" hidden></label>
 	<input
 		type="search"
@@ -40,35 +35,60 @@
   <button></button>
 </form>
 
-			<div class="container">
-				<button class="filter">coco</button>
-				<button class="filter">citron</button>
-				<button class="filter">poisson</button>
-			</div>
-			<form class="container">
-				<fieldset class="inputDropdown">
-  <label for=Ingrédients
-    Ingrédients class="hidden">
-  </label>
-  <input type="text" placeholder=Ingrédients name=Ingrédients id=Ingrédients />
-  <button></button>
-</fieldset>
-				<fieldset class="inputDropdown">
-  <label for=Appareil
-    Appareil class="hidden">
-  </label>
-  <input type="text" placeholder=Appareil name=Appareil id=Appareil />
-  <button></button>
-</fieldset>
-				<fieldset class="inputDropdown">
-  <label for=Ustensiles
-    Ustensiles class="hidden">
-  </label>
-  <input type="text" placeholder=Ustensiles name=Ustensiles id=Ustensiles />
-  <button></button>
-</fieldset>
-			</form>
-			<article class="recipe">
+      <div class="container">
+        <button class="filter">coco</button>
+          <button class="filter">citron</button>
+            <button class="filter">poisson</button>
+      </div>
+      <form class="container">
+        <div id=ingredients class="dropdown">
+  <fieldset class="dropdownInput marginBottom">
+      <label for=Ingrédients
+        Ingrédients class="hidden">
+      </label>
+      <input type="text" placeholder=Ingrédients name=Ingrédients id=Ingrédients class="extended"/>
+            <button class="icon"></button>
+  </fieldset>
+
+  
+    <div class="dropdownExpansion">
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+    </div>
+    
+</div>
+          <div id=appliance class="dropdown">
+  <fieldset class="dropdownInput false">
+      <label for=Appareil
+        Appareil class="hidden">
+      </label>
+      <input type="text" placeholder=Appareil name=Appareil id=Appareil class="false"/>
+            <button class="icon"></button>
+  </fieldset>
+
+  
+</div>
+            <div id=ustensils class="dropdown">
+  <fieldset class="dropdownInput false">
+      <label for=Ustensiles
+        Ustensiles class="hidden">
+      </label>
+      <input type="text" placeholder=Ustensiles name=Ustensiles id=Ustensiles class="false"/>
+            <button class="icon"></button>
+  </fieldset>
+
+  
+</div>
+      </form>
+      <article class="recipe">
 	<div class="photo"></div>
 	<h2>Limonade de Coco</h2>
 	<p class="time">60 min</p>
@@ -98,7 +118,7 @@
     Mixer jusqu'à avoir la consistence désirée</p>
 </article>
 
-			<article class="recipe">
+        <article class="recipe">
 	<div class="photo"></div>
 	<h2>Limonade de Coco</h2>
 	<p class="time">60 min</p>
@@ -128,7 +148,7 @@
     Mixer jusqu'à avoir la consistence désirée</p>
 </article>
 
-			<article class="recipe">
+          <article class="recipe">
 	<div class="photo"></div>
 	<h2>Limonade de Coco</h2>
 	<p class="time">60 min</p>
@@ -158,7 +178,7 @@
     Mixer jusqu'à avoir la consistence désirée</p>
 </article>
 
-			<article class="recipe">
+            <article class="recipe">
 	<div class="photo"></div>
 	<h2>Limonade de Coco</h2>
 	<p class="time">60 min</p>
@@ -188,7 +208,7 @@
     Mixer jusqu'à avoir la consistence désirée</p>
 </article>
 
-			<article class="recipe">
+              <article class="recipe">
 	<div class="photo"></div>
 	<h2>Limonade de Coco</h2>
 	<p class="time">60 min</p>
@@ -218,7 +238,8 @@
     Mixer jusqu'à avoir la consistence désirée</p>
 </article>
 
-			
-		</main>
-	</body>
+
+  </main>
+</body>
+
 </html>

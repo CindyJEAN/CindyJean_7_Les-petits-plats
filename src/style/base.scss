@@ -1,36 +1,46 @@
 $colorIngredient: #3282f7;
 $colorAppliance: #68d9a4;
-$colorIngredientUstensil: #ed6454;
+$colorUstensil: #ed6454;
 $grey: #e7e7e7;
 $darkGrey: #c7bebe;
 
 body {
-	max-width: 1280px;
+  max-width: 1280px;
   width: 90vw;
-	margin: auto;
+  margin: auto;
 
-	& * {
-		font-family: "Lato", sans-serif;
-	}
+  & * {
+    font-family: "Lato", sans-serif;
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+  }
 }
 
 h1 {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 main {
-	display: flex;
-	flex-wrap: wrap;
-	// justify-content: space-between;
-	column-gap: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: space-between;
+  column-gap: 5%;
 }
 
-button, input, fieldset {
-	border: none;
-	background-color: transparent;
+button,
+input,
+fieldset {
+  border: none;
+  background-color: transparent;
 }
 
 .container {
-	width: 100%;
-	display: flex;
+  width: 100%;
+  display: flex;
 }

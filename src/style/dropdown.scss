@@ -1,125 +1,173 @@
-.hidden {
-	border: 0;
-	clip: rect(0, 0, 0, 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
+#appliance {
+  background-color: $colorAppliance;
+  .dropdownExpansion {
+    background-color: $colorAppliance;
+  }
 }
-
-.inputDropdown {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0;
-
-	background-color: $colorAppliance;
-	border-radius: 5px;
-	cursor: pointer;
-	margin-right: 1rem;
-	margin-bottom: 2rem;
-
-	* {
-		color: white;
-    font-size: 1.125rem;
-	}
-
-	input {
-		padding: 20px 15px;
-
-		&::placeholder {
-			// font-size: 1.125rem;
-			color: white;
-		}
-		&:focus-visible {
-      outline: none;
-		}
-	}
-
-	button {
-		width: 3rem;
-		&::after {
-			content: "\f078";
-			font-family: "Font Awesome 5 Free";
-			font-weight: bold;
-		}
-	}
+#ingredients {
+  background-color: $colorIngredient;
+  .dropdownExpansion {
+    background-color: $colorIngredient;
+  }
+}
+#ustensils {
+  background-color: $colorUstensil;
+  .dropdownExpansion {
+    background-color: $colorUstensil;
+  }
 }
 
 // .dropdownContainer {
-// 	width: 100%;
-// 	height: 4rem;
-// 	padding-top: 1rem;
-// 	display: none;
-// 	position: relative;
-// 	z-index: 1;
-
-// 	@include desktop {
-// 		display: block;
-// 	}
+//   width: 100%;
+//   height: 6rem;
+//   padding-top: 1rem;
+//   position: relative;
+//   z-index: 1;
 // }
 
-.absolutePosition {
-	position: absolute;
-	left: 10rem;
-	top: 0;
-}
-
 .dropdown {
-	display: flex;
-	list-style-type: none;
-	flex-direction: column;
-	width: 165px;
-	font-size: 1.125rem;
-	color: white;
-	background-color: $colorAppliance;
-	padding: 5px 0;
-	border: none;
-	border-radius: 5px;
+  // background-color: $colorAppliance;
+  border-radius: 5px;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+  height: fit-content;
 
-	.listItem {
-		display: flex;
-		color: white;
-		font-size: 18px;
-		justify-content: space-between;
-		flex-direction: row;
-		flex-wrap: wrap;
-		cursor: pointer;
-		padding: 0 15px 10px 15px;
+  .extended {
+    min-width: 500px;
+  }
 
-		&::after {
-			font-family: "Font Awesome 5 Free";
-			font-weight: bold;
-		}
+  .hidden {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 
-		&::before {
-			content: "";
-			display: block;
-			width: 100%;
-			height: 0.5px;
-			background-color: white;
-			margin-bottom: 10px;
-		}
+  .marginBottom {
+    margin-bottom: 0.5rem;
+  }
 
-		&:first-of-type {
-			padding-top: 15px;
-			&::before {
-				content: none;
-			}
-			&::after {
-				content: "\f078";
-			}
-		}
-	}
+  .dropdownInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
 
-	&.list {
-		li {
-			&:first-of-type::after {
-				content: "\f077";
-			}
-		}
-	}
+    // background-color: $colorAppliance;
+    // border-radius: 5px;
+    cursor: pointer;
+    // margin-right: 1rem;
+    // margin-bottom: 2rem;
+
+    * {
+      color: white;
+      font-size: 1.125rem;
+    }
+
+    input {
+      padding: 1.5rem 1rem;
+
+      &::placeholder {
+        // font-size: 1.125rem;
+        color: white;
+      }
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    button.icon {
+      width: 3rem;
+      &::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: bold;
+      }
+    }
+  }
+
+  .absolutePosition {
+    position: absolute;
+    left: 10rem;
+    top: 0;
+  }
+}
+.dropdownExpansion {
+  // background-color: $colorAppliance;
+  position: absolute;
+  margin-top: -10px;
+  // bottom: -3rem;
+  width: calc(100% - 2rem);
+  display: grid;
+
+  border-radius: 0 0 5px 5px;
+  grid-template-columns: 35% 35% 30%;
+  justify-items: flex-start;
+  padding: 0 1rem 0.5rem 1rem;
+
+  button {
+    font-size: 1.125rem;
+    color: white;
+    padding: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  // list-style-type: none;
+  // flex-direction: column;
+  // width: 165px;
+  // font-size: 1.125rem;
+  // color: white;
+  // background-color: $colorAppliance;
+  // padding: 5px 0;
+  // border: none;
+  // border-radius: 5px;
+
+  // .listItem {
+  // 	display: flex;
+  // 	color: white;
+  // 	font-size: 18px;
+  // 	justify-content: space-between;
+  // 	flex-direction: row;
+  // 	flex-wrap: wrap;
+  // 	cursor: pointer;
+  // 	padding: 0 15px 10px 15px;
+
+  // 	&::after {
+  // 		font-family: "Font Awesome 5 Free";
+  // 		font-weight: bold;
+  // 	}
+
+  // 	&::before {
+  // 		content: "";
+  // 		display: block;
+  // 		width: 100%;
+  // 		height: 0.5px;
+  // 		background-color: white;
+  // 		margin-bottom: 10px;
+  // 	}
+
+  // 	&:first-of-type {
+  // 		padding-top: 15px;
+  // 		&::before {
+  // 			content: none;
+  // 		}
+  // 		&::after {
+  // 			content: "\f078";
+  // 		}
+  // 	}
+  // }
+
+  // &.list {
+  // 	li {
+  // 		&:first-of-type::after {
+  // 			content: "\f077";
+  // 		}
+  // 	}
+  // }
 }

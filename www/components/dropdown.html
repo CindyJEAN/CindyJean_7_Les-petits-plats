@@ -1,7 +1,24 @@
-<fieldset class="inputDropdown">
-  <label for=<%- name %>
-    <%- name %> class="hidden">
-  </label>
-  <input type="text" placeholder=<%- name %> name=<%- name %> id=<%- name %> />
-  <button></button>
-</fieldset>
+<div id=<%- id %> class="dropdown">
+  <fieldset class="dropdownInput <%- open && "marginBottom" %>">
+      <label for=<%- name %>
+        <%- name %> class="hidden">
+      </label>
+      <input type="text" placeholder=<%- name %> name=<%- name %> id=<%- name %> class="<%- open && "extended" %>"/>
+            <button class="icon"></button>
+  </fieldset>
+
+  <% if (open) { %>
+    <div class="dropdownExpansion">
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+      <button>Lait de coco</button>
+    </div>
+    <% } %>
+</div>
