@@ -37,6 +37,12 @@
     min-width: 500px;
   }
 
+  &.open {
+    button.icon {
+      transform: rotate(180deg);
+    }
+  }
+
   .hidden {
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -72,6 +78,7 @@
 
     input {
       padding: 1.5rem 1rem;
+      width: 100px;
 
       &::placeholder {
         // font-size: 1.125rem;
