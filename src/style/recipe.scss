@@ -1,9 +1,7 @@
 article.recipe {
 	display: grid;
-	// width: 100%;
   width: 30%;
 	height: 300px;
-	// max-width: 350px;
   margin-bottom: 3rem;
 	border-radius: 5px;
 	background-color: $grey;
@@ -56,8 +54,6 @@ article.recipe {
       padding-left: 1rem;
       padding-right: 1rem;
 			margin: 0;
-      // overflow-y: auto;
-			// text-overflow: ellipsis;
 			overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
