@@ -25,15 +25,9 @@
   position: relative;
   height: fit-content;
 
-  .extended {
-    min-width: 500px;
-  }
-
-  &.open {
-    button.icon {
-      transform: rotate(180deg);
-    }
-  }
+  // .extended {
+  //   min-width: 500px;
+  // }
 
   .hidden {
     border: 0;
@@ -47,9 +41,9 @@
     width: 1px;
   }
 
-  .marginBottom {
-    margin-bottom: 0.5rem;
-  }
+  // .marginBottom {
+  //   margin-bottom: 0.5rem;
+  // }
 
   .dropdownInput {
     display: flex;
@@ -91,6 +85,21 @@
     top: 0;
   }
 }
+
+.dropdown.open {
+  button.icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdownInput {
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    min-width: 500px;
+  }
+}
+
 .dropdownExpansion {
   position: absolute;
   margin-top: -10px;

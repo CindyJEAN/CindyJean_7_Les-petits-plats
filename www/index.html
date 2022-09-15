@@ -16,7 +16,11 @@
 </head>
 
 <body>
-  <script src="dropdown.js" defer></script>
+  <script src="components/dropdown.js" defer></script>
+  <!-- <script type="module">
+    import { recipes } from "/content/recipes.js";
+    console.log(recipes);
+  </script> -->
 
   <header>
     <img src="content/logo.svg" alt="logo les petit plats" />
@@ -42,50 +46,59 @@
       </div>
       <form class="container">
         <div id=ingredients class="dropdown open">
-  <fieldset class="dropdownInput marginBottom">
-    <label for=Ingrédients
-      Ingrédients class="hidden">
-    </label>
-    <input type="text" placeholder=Ingrédients name=Ingrédients id=Ingrédients class="extended"/>
-          <button class="icon"></button>
-  </fieldset>
+<!-- <div id=ingredients class="dropdown"> -->
+  <!-- <fieldset class="dropdownInput  marginBottom"> -->
+    <fieldset class="dropdownInput">
+      <label for=Ingrédients
+        Ingrédients class="hidden">
+      </label>
+      <!-- <input type="text" placeholder=Ingrédients name=Ingrédients id=Ingrédients class="extended"/> -->
+      <input type="text" placeholder=Ingrédients name=Ingrédients id=Ingrédients "/>
+            <button class="icon"></button>
+    </fieldset>
 
-  
-    <div class="dropdownExpansion">
-      <button>Lait de coco</button>
-      <button>Lait de coco</button>
-      <button>Lait de coco</button>
-      <button>Lait de coco</button>
-      <button>Lait de coco</button>
-      <button>Lait de coco</button>
-      <button>Lait de coco</button>
-      <button>Lait de coco</button>
-      <button>Lait de coco</button>
-      <button>Lait de coco</button>
-    </div>
     
+      <div class="dropdownExpansion">
+        <button>Lait de coco</button>
+        <button>Lait de coco</button>
+        <button>Lait de coco</button>
+        <button>Lait de coco</button>
+        <button>Lait de coco</button>
+        <button>Lait de coco</button>
+        <button>Lait de coco</button>
+        <button>Lait de coco</button>
+        <button>Lait de coco</button>
+        <button>Lait de coco</button>
+      </div>
+      
 </div>
           <div id=appliance class="dropdown false">
-  <fieldset class="dropdownInput false">
-    <label for=Appareil
-      Appareil class="hidden">
-    </label>
-    <input type="text" placeholder=Appareil name=Appareil id=Appareil class="false"/>
-          <button class="icon"></button>
-  </fieldset>
+<!-- <div id=appliance class="dropdown"> -->
+  <!-- <fieldset class="dropdownInput false"> -->
+    <fieldset class="dropdownInput">
+      <label for=Appareil
+        Appareil class="hidden">
+      </label>
+      <!-- <input type="text" placeholder=Appareil name=Appareil id=Appareil class="false"/> -->
+      <input type="text" placeholder=Appareil name=Appareil id=Appareil "/>
+            <button class="icon"></button>
+    </fieldset>
 
-  
+    
 </div>
             <div id=ustensils class="dropdown false">
-  <fieldset class="dropdownInput false">
-    <label for=Ustensiles
-      Ustensiles class="hidden">
-    </label>
-    <input type="text" placeholder=Ustensiles name=Ustensiles id=Ustensiles class="false"/>
-          <button class="icon"></button>
-  </fieldset>
+<!-- <div id=ustensils class="dropdown"> -->
+  <!-- <fieldset class="dropdownInput false"> -->
+    <fieldset class="dropdownInput">
+      <label for=Ustensiles
+        Ustensiles class="hidden">
+      </label>
+      <!-- <input type="text" placeholder=Ustensiles name=Ustensiles id=Ustensiles class="false"/> -->
+      <input type="text" placeholder=Ustensiles name=Ustensiles id=Ustensiles "/>
+            <button class="icon"></button>
+    </fieldset>
 
-  
+    
 </div>
       </form>
       <article class="recipe">
