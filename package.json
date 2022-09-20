@@ -19,6 +19,6 @@
     "gulp-concat": "^2.6.1",
     "gulp-ejs": "^5.1.0",
     "gulp-sass": "^5.1.0",
-    "node-sass": "^6.0.0"
+    "node-sass": "^7.0.3"
   }
 }
