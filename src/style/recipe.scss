@@ -1,84 +1,85 @@
 article.recipe {
-	display: grid;
+  display: grid;
   width: 30%;
-	height: 300px;
+  height: 300px;
   margin-bottom: 3rem;
-	border-radius: 5px;
-	background-color: $grey;
-	grid-template-areas:
-		"photo photo photo"
-		"name name time"
-		"ingredients steps steps";
-	grid-template-columns: 40% auto 120px;
-	padding-bottom: 1rem;
+  border-radius: 5px;
+  background-color: $grey;
+  grid-template-areas:
+    "photo photo photo"
+    "name name time"
+    "ingredients steps steps";
+  grid-template-columns: 40% auto 120px;
+  grid-template-rows: min-content min-content auto;
+  padding-bottom: 1rem;
 
-	.photo {
-		width: 100%;
-		height: 150px;
-		background-color: $darkGrey;
-		border-radius: 5px 5px 0 0;
-		grid-area: photo;
-	}
+  .photo {
+    width: 100%;
+    height: 150px;
+    background-color: $darkGrey;
+    border-radius: 5px 5px 0 0;
+    grid-area: photo;
+  }
 
-	h2 {
-		font-size: 1.125rem;
-		grid-area: name;
-		padding-left: 1rem;
-	}
+  h2 {
+    font-size: 1.125rem;
+    grid-area: name;
+    padding-left: 1rem;
+  }
 
-	h3 {
-		font-size: 0.75rem;
-		font-weight: bold;
-		padding-right: 5px;
-	}
+  h3 {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding-right: 5px;
+  }
 
-	.time {
-		font-size: 1.125rem;
-		font-weight: bold;
-		margin: auto 1rem;
-		justify-self: flex-end;
+  .time {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin: auto 1rem;
+    justify-self: flex-end;
 
-		&::before {
-			content: "\f017";
-			font-family: "Font Awesome 5 Free";
-			font-weight: normal;
-			margin-right: 0.5rem;
-		}
-	}
+    &::before {
+      content: "\f017";
+      font-family: "Font Awesome 5 Free";
+      font-weight: normal;
+      margin-right: 0.5rem;
+    }
+  }
 
-	p {
-		font-size: 0.75rem;
+  p {
+    font-size: 0.75rem;
 
     &.steps {
       grid-area: steps;
       padding-left: 1rem;
       padding-right: 1rem;
-			margin: 0;
-			overflow: hidden;
+      margin: 0;
+      overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 6;
       -webkit-box-orient: vertical;
-       white-space: normal;
-       margin-bottom: 7px;
-    
+      white-space: normal;
+      margin-bottom: 7px;
+      height: min-content;
     }
-	}
+  }
 
-	.ingredientsContainer {
-		padding-left: 1rem;
-		overflow-y: auto;
+  .ingredientsContainer {
+    padding-left: 1rem;
+    overflow-y: auto;
 
-		.ingredient {
-			display: flex;
-			flex-wrap: wrap;
-			height: fit-content;
+    .ingredient {
+      display: flex;
+      flex-wrap: wrap;
+      height: fit-content;
       padding-bottom: 0.2rem;
 
-			h3,
-			p {
-				margin: 0;
-			}
-		}
-	}
+      h3,
+      p {
+        margin: 0;
+      }
+    }
+  }
 }
