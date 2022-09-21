@@ -1,13 +1,4 @@
-import { getRecipeById } from "../js/dataManager.js";
 import { renderIngredient } from "./ingredient.js";
-
-const recipe1 = getRecipeById(1);
-const recipe2 = getRecipeById(2);
-
-console.log("recipe1", recipe1);
-console.log("recipe2", recipe2);
-
-const main = document.querySelector("main");
 
 /**
  * @param   {HTMLElement}  domTarget
@@ -44,8 +35,5 @@ function renderRecipe(domTarget, recipe) {
 
   domTarget.appendChild(card);
 }
-
-renderRecipe(main, recipe1);
-renderRecipe(main, recipe2);
 
 export { renderRecipe };

@@ -1,7 +1,8 @@
 article.recipe {
   display: grid;
   width: 30%;
-  height: 300px;
+  // height: 300px;
+  height: 350px;
   margin-bottom: 3rem;
   border-radius: 5px;
   background-color: $grey;
@@ -9,7 +10,7 @@ article.recipe {
     "photo photo photo"
     "name name time"
     "ingredients steps steps";
-  grid-template-columns: 40% auto 120px;
+  grid-template-columns: 40% auto 125px;
   grid-template-rows: min-content min-content auto;
   padding-bottom: 1rem;
 
