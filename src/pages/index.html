@@ -16,14 +16,7 @@
 </head>
 
 <body>
-  <!-- <script type="module" src="components/recipe.js" defer></script> -->
   <script type="module" src="js/index.js" defer></script>
-  <script src="components/dropdown.js" defer></script>
-  <script src="components/searchBar.js" defer></script>
-  <!-- <script type="module">
-    import { recipes } from "/content/recipes.js";
-    console.log(recipes);
-  </script> -->
 
   <header>
     <img src="content/logo.svg" alt="logo les petit plats" />
@@ -31,20 +24,20 @@
 
   <main>
 
-    <%- include('../../www/components/searchBar.html'); %>
-      <div class="container">
+    <!-- <%- include('../../www/components/searchBar.html'); %> -->
+      <!-- <div id="filtersContainer" class="container">
         <%- include('../../www/components/filter.html', { "name" : "coco" }); %>
           <%- include('../../www/components/filter.html', { "name" : "citron" }); %>
             <%- include('../../www/components/filter.html', { "name" : "poisson" }); %>
       </div>
-      <form class="container">
+      <form id="dropdownsContainer" class="container">
         <%- include('../../www/components/dropdown.html', { "id" : "ingredients" , "name" : "Ingrédients" , "open" :
           true}); %>
           <%- include('../../www/components/dropdown.html', { "id" : "appliance" , "name" : "Appareil" , "open" :
             false}); %>
             <%- include('../../www/components/dropdown.html', { "id" : "ustensils" , "name" : "Ustensiles" , "open" :
               false}); %>
-      </form>
+      </form> -->
   </main>
 </body>
 
