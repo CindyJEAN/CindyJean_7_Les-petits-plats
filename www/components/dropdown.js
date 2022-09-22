@@ -1,9 +1,8 @@
-
 /**
- * @param   {HTMLElement}  domTarget 
- * @param   {String}  category   
+ * @param   {HTMLElement}  domTarget
+ * @param   {String}  category
  *
- * @return  {Void}             
+ * @return  {Void}
  */
 function renderDropdown(domTarget, category) {
   const dropdown = document.createElement("div");
@@ -15,23 +14,19 @@ function renderDropdown(domTarget, category) {
 
   dropdown.innerHTML = `
   <fieldset class="dropdownInput">
-    <label for=${category+"Input"} class="hidden">
+    <label for=${category + "Input"} class="hidden">
       ${label}
     </label>
-    <input type="text" placeholder=${label} name=${category} id=${category+"Input"} />
+    <input type="text" placeholder=${label} name=${category} id=${
+    category + "Input"
+  } />
     <button class="icon"></button>
   </fieldset>
   `;
 
-  const expansion = document.createElement("div");
-  expansion.className = "dropdownExpansion";
-
-  if (dropdown.classList.contains("open")) {
-    //TODO dynamique, et enlever exemple
-    const suggestions = ["Lait de coco", "Crème de coco"];
-    renderSuggestions(expansion, suggestions);
-    dropdown.appendChild(expansion);
-  }
+  // if (dropdown.classList.contains("open")) {
+  //   renderDropdownExpansion(dropdown);
+  // }
 
   domTarget.appendChild(dropdown);
 }
@@ -59,9 +54,9 @@ function getTranslation(text) {
 }
 
 /**
- * @param   {HTMLElement}  domTarget    
- * @param   {Array}  suggestions  
- * @return  {Void}             
+ * @param   {HTMLElement}  domTarget
+ * @param   {Array}  suggestions
+ * @return  {Void}
  */
 function renderSuggestions(domTarget, suggestions) {
   for (const element of suggestions) {
@@ -71,4 +66,18 @@ function renderSuggestions(domTarget, suggestions) {
   }
 }
 
-export { renderDropdown };
+function renderDropdownExpansion(domTarget) {
+  const expansion = document.createElement("div");
+  expansion.className = "dropdownExpansion";
+
+  //TODO dynamique, et enlever exemple
+  const suggestions = ["Lait de coco", "Crème de coco"];
+  renderSuggestions(expansion, suggestions);
+  domTarget.appendChild(expansion);
+}
+
+// function removeDropdownExpansion(domTarget) {
+
+// }
+
+export { renderDropdown, renderDropdownExpansion };

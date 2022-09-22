@@ -1,3 +1,4 @@
+import { renderDropdownExpansion } from "../components/dropdown.js";
 import { dropdowns } from "./dataManager.js";
 
 /**
@@ -8,7 +9,6 @@ searchBar?.addEventListener("input", function (e) {
   console.log(searchBar.value);
   // if (element.value.length >= 3)
 });
-
 
 for (const dropdown of dropdowns) {
   addInputListener(dropdown);
@@ -31,8 +31,10 @@ function addInputListener(id) {
     // console.log(input.value);
     if (input.value.length < 3) {
       form.classList.remove("open");
+      form.querySelector(".dropdownExpansion").remove();
       return;
     }
+    renderDropdownExpansion(form);
     form.classList.add("open");
   });
 }

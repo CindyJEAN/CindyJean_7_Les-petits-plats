@@ -21,4 +21,8 @@ function getRecipeById(id) {
   }
 }
 
+function search(input) {
+  
+}
+
 export { initData, getRecipeById, dropdowns };
