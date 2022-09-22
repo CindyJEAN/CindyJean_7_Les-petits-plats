@@ -1,34 +1,44 @@
 import { getRecipeById } from "./dataManager.js";
-import { renderRecipe } from "../components/recipe.js";
 import { recipes } from "../content/recipes.js";
-import {
-  renderSearchBar,
-  returnSearchBarElement,
-} from "../components/searchBar.js";
+import { renderFilter } from "../components/filter.js";
+import { renderRecipe } from "../components/recipe.js";
+import { renderSearchBar } from "../components/searchBar.js";
 
 const main = document.querySelector("main");
-// ---- searchbar rendering
-//TODO searchbar
+const filtersContainer = document.createElement("div");
+filtersContainer.className = "container";
+const dropdownsContainer = document.createElement("div");
+dropdownsContainer.className = "container";
+// const filtersContainer = document.querySelector("#filtersContainer");
+// ----- searchbar rendering ----- //
 renderSearchBar(main);
-// const searchBar = returnSearchBarElement();
-// main.appendChild(searchBar);
 /**
  * @type   {HTMLInputElement}
  */
 const element = document.querySelector("#searchBar");
 
 element?.addEventListener("input", function (e) {
-  // if (element.value.length >= 3)
   console.log(element.value);
+  // if (element.value.length >= 3)
 });
 
-// ---- filters rendering
-//TODO filters
+// ----- filters rendering ----- //
+main.appendChild(filtersContainer);
 
-// ---- dropdown rendering
+const filters = [
+  ["Coco", "ingredient"],
+  ["Sucre", "ingredient"],
+  ["Blender", "appliance"],
+];
+for (const filter of filters) {
+  renderFilter(filtersContainer, filter);
+}
+
+// ----- dropdown rendering ----- //
 //TODO dropdown
+main.appendChild(dropdownsContainer);
 
-// ---- recipes rendering
+// ----- recipes rendering ----- //
 const initialRecipes = [];
 for (let i = 1; i <= recipes.length; i++) {
   initialRecipes.push(i);

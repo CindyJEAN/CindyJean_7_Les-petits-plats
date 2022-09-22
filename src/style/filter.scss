@@ -2,7 +2,6 @@ button.filter {
 	font-size: 0.875rem;
 	color: white;
 	font-weight: bold;
-	background-color: $colorIngredient;
 	display: flex;
 	align-items: center;
 	border-radius: 5px;
@@ -19,8 +18,23 @@ button.filter {
 		font-weight: normal;
 		margin-left: 0.5rem;
 	}
+}
 
-	&:hover {
-		background-color: darken($colorIngredient, 10%);
+.filter.appliance {
+  background-color: $colorAppliance;
+  &:hover {
+		background-color: darken($colorAppliance, 10%);
 	}
+}
+.filter.ingredient {
+  background-color: $colorIngredient;
+  &:hover {
+    background-color: darken($colorIngredient, 10%);
+  }
+}
+.filter.ustensil {
+  background-color: $colorUstensil;
+  &:hover {
+    background-color: darken($colorUstensil, 10%);
+  }
 }

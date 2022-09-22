@@ -1,22 +1,3 @@
-#appliance {
-  background-color: $colorAppliance;
-  .dropdownExpansion {
-    background-color: $colorAppliance;
-  }
-}
-#ingredients {
-  background-color: $colorIngredient;
-  .dropdownExpansion {
-    background-color: $colorIngredient;
-  }
-}
-#ustensils {
-  background-color: $colorUstensil;
-  .dropdownExpansion {
-    background-color: $colorUstensil;
-  }
-}
-
 
 .dropdown {
   border-radius: 5px;
@@ -116,5 +97,24 @@
     color: white;
     padding: 0;
     margin-bottom: 0.8rem;
+  }
+}
+
+#appliance {
+  background-color: $colorAppliance;
+  .dropdownExpansion {
+    background-color: $colorAppliance;
+  }
+}
+#ingredients {
+  background-color: $colorIngredient;
+  .dropdownExpansion {
+    background-color: $colorIngredient;
+  }
+}
+#ustensils {
+  background-color: $colorUstensil;
+  .dropdownExpansion {
+    background-color: $colorUstensil;
   }
 }
