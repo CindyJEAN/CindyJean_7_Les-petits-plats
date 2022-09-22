@@ -15,10 +15,10 @@ function renderDropdown(domTarget, category) {
 
   dropdown.innerHTML = `
   <fieldset class="dropdownInput">
-    <label for=${label} class="hidden">
+    <label for=${category+"Input"} class="hidden">
       ${label}
     </label>
-    <input type="text" placeholder=${label} name=${label} id=${label}/>
+    <input type="text" placeholder=${label} name=${category} id=${category+"Input"} />
     <button class="icon"></button>
   </fieldset>
   `;
@@ -70,7 +70,5 @@ function renderSuggestions(domTarget, suggestions) {
     domTarget.appendChild(button);
   }
 }
-
-
 
 export { renderDropdown };

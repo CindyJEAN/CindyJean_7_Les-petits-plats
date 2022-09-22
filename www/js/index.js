@@ -4,26 +4,15 @@ import { renderFilter } from "../components/filter.js";
 import { renderRecipe } from "../components/recipe.js";
 import { renderSearchBar } from "../components/searchBar.js";
 import { renderDropdown } from "../components/dropdown.js";
-
-const dropdowns = ["ingredients", "appliance", "ustensils"];
+import { dropdowns } from "./dataManager.js";
 
 const main = document.querySelector("main");
 const filtersContainer = document.createElement("div");
 filtersContainer.className = "container";
 const dropdownsContainer = document.createElement("form");
 dropdownsContainer.className = "container";
-// const filtersContainer = document.querySelector("#filtersContainer");
 // ----- searchbar rendering ----- //
 renderSearchBar(main);
-/**
- * @type   {HTMLInputElement}
- */
-const element = document.querySelector("#searchBar");
-
-element?.addEventListener("input", function (e) {
-  console.log(element.value);
-  // if (element.value.length >= 3)
-});
 
 // ----- filters rendering ----- //
 main.appendChild(filtersContainer);
@@ -33,6 +22,7 @@ const filters = [
   ["Sucre", "ingredient"],
   ["Blender", "appliance"],
 ];
+//TODO get filters from function in dataManager
 for (const filter of filters) {
   renderFilter(filtersContainer, filter);
 }
@@ -45,10 +35,11 @@ for (const dropdown of dropdowns) {
 
 // ----- recipes rendering ----- //
 const initialRecipes = [];
+//TODO get initialRecipes from DataManager
 for (let i = 1; i <= recipes.length; i++) {
   initialRecipes.push(i);
 }
-
+//TODO get filteredRecipes from DataManager
 const filteredRecipes = [1, 3, 8, 10];
 
 let recipesToShow = initialRecipes;

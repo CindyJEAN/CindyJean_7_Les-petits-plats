@@ -1,6 +1,8 @@
 // TODO write typedef recipe
 import { recipes } from "../content/recipes.js";
 let data;
+let filters = [];
+const dropdowns = ["ingredients", "appliance", "ustensils"];
 
 function initData() {
   data = [...recipes];
@@ -19,4 +21,4 @@ function getRecipeById(id) {
   }
 }
 
-export { initData, getRecipeById };
+export { initData, getRecipeById, dropdowns };
