@@ -1,4 +1,7 @@
-import { renderDropdownExpansion } from "../components/dropdown.js";
+import {
+  removeDropdownExpansion,
+  renderDropdownExpansion,
+} from "../components/dropdown.js";
 import { dropdowns } from "./dataManager.js";
 
 /**
@@ -11,7 +14,7 @@ searchBar?.addEventListener("input", function (e) {
 });
 
 for (const dropdown of dropdowns) {
-  addInputListener(dropdown);
+  addDropdownInputListener(dropdown);
   // handleClickOutsideListener(dropdown);
 }
 
@@ -20,38 +23,29 @@ for (const dropdown of dropdowns) {
  * @param   {String}  id  dropdown id
  * @return  {Void}
  */
-function addInputListener(id) {
+function addDropdownInputListener(id) {
   /**
    * @type   {HTMLInputElement}
    */
-  const form = document?.querySelector("#" + id);
-  const input = form.querySelector("input");
+  const dropdown = document?.querySelector("#" + id);
+  const input = dropdown.querySelector("input");
 
   input.addEventListener("input", function (e) {
-    // console.log(input.value);
-    if (input.value.length < 3) {
-      form.classList.remove("open");
-      form.querySelector(".dropdownExpansion").remove();
-      return;
-    }
-    renderDropdownExpansion(form);
-    form.classList.add("open");
+    renderDropdownExpansion(dropdown);
+  });
+
+
+  const buttons = dropdown.querySelectorAll("button");
+  buttons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.stopPropagation;
+      e.preventDefault();
+      if (dropdown.classList.contains("open")) {
+        removeDropdownExpansion(dropdown);
+        return;
+      }
+      renderDropdownExpansion(dropdown);
+    });
   });
 }
 
-//TODO close dropdown when clickaway
-const handleClickOutside = (event, element) => {
-  const isClickInside = element?.contains(event.target);
-  if (!isClickInside) {
-    element.classList.remove("open");
-  }
-};
-
-// function handleClickOutsideListener(id) {
-//   const form = document.querySelector("#" + id);
-//   document.addEventListener("click", handleClickOutside(form));
-//   function cleanup() {
-//     document.removeEventListener("click", handleClickOutside(form));
-//   }
-//   cleanup();
-// }

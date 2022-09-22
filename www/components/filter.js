@@ -8,6 +8,8 @@ function renderFilter(domTarget, filter) {
   element.className = "filter";
   element.innerText = filter[0];
   element.classList.add(filter[1]);
+  
+  //TODO onclick remove filter : in dom & in array
 
   domTarget.appendChild(element);
 }

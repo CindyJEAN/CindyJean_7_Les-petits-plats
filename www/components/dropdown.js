@@ -1,3 +1,5 @@
+import { translate } from "../js/dataManager.js";
+
 /**
  * @param   {HTMLElement}  domTarget
  * @param   {String}  category
@@ -8,9 +10,7 @@ function renderDropdown(domTarget, category) {
   const dropdown = document.createElement("div");
   dropdown.id = category;
   dropdown.className = "dropdown";
-  const label = getTranslation(category);
-  // const fieldset = document.createElement("fieldset");
-  // fieldset.className = "dropdownInput";
+  const label = translate[category];
 
   dropdown.innerHTML = `
   <fieldset class="dropdownInput">
@@ -24,33 +24,7 @@ function renderDropdown(domTarget, category) {
   </fieldset>
   `;
 
-  // if (dropdown.classList.contains("open")) {
-  //   renderDropdownExpansion(dropdown);
-  // }
-
   domTarget.appendChild(dropdown);
-}
-
-/**
- * @param   {String}  text
- * @return  {String}        translated text for display
- */
-function getTranslation(text) {
-  let translation;
-  switch (text) {
-    case "appliance":
-      translation = "Appareil";
-      break;
-    case "ustensils":
-      translation = "Ustensiles";
-      break;
-    case "ingredients":
-      translation = "Ingrédients";
-      break;
-    default:
-      translation = "";
-  }
-  return translation;
 }
 
 /**
@@ -59,6 +33,11 @@ function getTranslation(text) {
  * @return  {Void}
  */
 function renderSuggestions(domTarget, suggestions) {
+  const buttons = domTarget.querySelectorAll("button");
+  if (buttons) {
+    buttons.forEach((button) => button.remove());
+  }
+
   for (const element of suggestions) {
     const button = document.createElement("button");
     button.innerText = element;
@@ -67,17 +46,25 @@ function renderSuggestions(domTarget, suggestions) {
 }
 
 function renderDropdownExpansion(domTarget) {
-  const expansion = document.createElement("div");
-  expansion.className = "dropdownExpansion";
+  const isOpen = domTarget.classList.contains("open");
+  let expansion;
+  if (isOpen) {
+    expansion = domTarget.querySelector(".dropdownExpansion");
+  } else {
+    expansion = document.createElement("div");
+    expansion.className = "dropdownExpansion";
+    domTarget.appendChild(expansion);
+    domTarget.classList.add("open");
+  }
 
   //TODO dynamique, et enlever exemple
   const suggestions = ["Lait de coco", "Crème de coco"];
   renderSuggestions(expansion, suggestions);
-  domTarget.appendChild(expansion);
 }
 
-// function removeDropdownExpansion(domTarget) {
+function removeDropdownExpansion(domTarget) {
+  domTarget.querySelector(".dropdownExpansion").remove();
+  domTarget.classList.remove("open");
+}
 
-// }
-
-export { renderDropdown, renderDropdownExpansion };
+export { renderDropdown, renderDropdownExpansion, removeDropdownExpansion };

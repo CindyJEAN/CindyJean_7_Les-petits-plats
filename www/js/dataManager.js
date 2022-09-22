@@ -1,5 +1,10 @@
 // TODO write typedef recipe
 import { recipes } from "../content/recipes.js";
+const translate = {
+  appliance: "Appareil",
+  ustensils: "Ustensiles",
+  ingredients: "Ingrédients",
+};
 let data;
 let filters = [];
 const dropdowns = ["ingredients", "appliance", "ustensils"];
@@ -21,8 +26,6 @@ function getRecipeById(id) {
   }
 }
 
-function search(input) {
-  
-}
+function search(input) {}
 
-export { initData, getRecipeById, dropdowns };
+export { initData, getRecipeById, dropdowns, translate };

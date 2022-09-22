@@ -8,14 +8,11 @@ import { renderIngredient } from "./ingredient.js";
 function renderRecipe(domTarget, recipe) {
   const card = document.createElement("article");
   card.className = "recipe";
-  card.innerHTML = `<div class="photo"></div>`;
-
-  const label = document.createElement("h2");
-  label.innerText = recipe.name;
-
-  const time = document.createElement("p");
-  time.className = "time";
-  time.innerText = recipe.time + " min";
+  card.innerHTML = `
+  <div class="photo"></div>
+  <h2>${recipe.name}</h2>
+  <p class="time">${recipe.time + " min"}</p>
+  `;
 
   const ingredientsContainer = document.createElement("div");
   ingredientsContainer.className = "ingredientsContainer";
@@ -28,8 +25,6 @@ function renderRecipe(domTarget, recipe) {
   steps.className = "steps";
   steps.innerText = recipe.description;
 
-  card.appendChild(label);
-  card.appendChild(time);
   card.appendChild(ingredientsContainer);
   card.appendChild(steps);
 
