@@ -1,3 +1,7 @@
+/**
+ * @param   {HTMLElement}  domTarget
+ * @return  {Void}
+ */
 function renderSearchBar(domTarget) {
   const searchBar = document.createElement("form");
   searchBar.className = "searchBar";

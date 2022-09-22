@@ -3,11 +3,14 @@ import { recipes } from "../content/recipes.js";
 import { renderFilter } from "../components/filter.js";
 import { renderRecipe } from "../components/recipe.js";
 import { renderSearchBar } from "../components/searchBar.js";
+import { renderDropdown } from "../components/dropdown.js";
+
+const dropdowns = ["ingredients", "appliance", "ustensils"];
 
 const main = document.querySelector("main");
 const filtersContainer = document.createElement("div");
 filtersContainer.className = "container";
-const dropdownsContainer = document.createElement("div");
+const dropdownsContainer = document.createElement("form");
 dropdownsContainer.className = "container";
 // const filtersContainer = document.querySelector("#filtersContainer");
 // ----- searchbar rendering ----- //
@@ -35,8 +38,10 @@ for (const filter of filters) {
 }
 
 // ----- dropdown rendering ----- //
-//TODO dropdown
 main.appendChild(dropdownsContainer);
+for (const dropdown of dropdowns) {
+  renderDropdown(dropdownsContainer, dropdown);
+}
 
 // ----- recipes rendering ----- //
 const initialRecipes = [];
