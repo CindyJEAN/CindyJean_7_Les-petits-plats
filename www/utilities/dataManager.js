@@ -6,7 +6,7 @@ const translate = {
   ingredients: "Ingrédients",
 };
 let data;
-let filters = [];
+const filters = [];
 const dropdowns = ["ingredients", "appliance", "ustensils"];
 
 function initData() {
@@ -26,6 +26,33 @@ function getRecipeById(id) {
   }
 }
 
+/**
+ * Remove filter from filters array
+ * @param   {Array}  filter
+ * @return  {Void}
+ */
+function removeFilter(filter) {
+  const index = filters.indexOf(filter);
+  filters.splice(index, 1);
+}
+
+/**
+ * add filter to filters array
+ * @param   {Array}  filter
+ * @return  {Void}
+ */
+function addFilter(filter) {
+  filters.push(filter);
+  console.log(filters);
+}
+
 function search(input) {}
 
-export { initData, getRecipeById, dropdowns, translate };
+export {
+  initData,
+  getRecipeById,
+  dropdowns,
+  translate,
+  removeFilter,
+  addFilter,
+};

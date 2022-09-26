@@ -1,4 +1,5 @@
-import { translate } from "../utilities/dataManager.js";
+import { addFilter, removeFilter, translate } from "../utilities/dataManager.js";
+import { renderFilter } from "./filter.js";
 
 /**
  * @param   {HTMLElement}  domTarget
@@ -33,6 +34,8 @@ function renderDropdown(domTarget, category) {
  * @return  {Void}
  */
 function renderSuggestions(domTarget, suggestions) {
+  const container = document.querySelector("#filtersContainer");
+  const category = domTarget.parentElement.id;
   const buttons = domTarget.querySelectorAll("button");
   if (buttons) {
     buttons.forEach((button) => button.remove());
@@ -41,13 +44,20 @@ function renderSuggestions(domTarget, suggestions) {
   for (const element of suggestions) {
     const button = document.createElement("button");
     button.innerText = element;
+    button.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      // @ts-ignore
+      renderFilter(container, [element, category]);
+      addFilter(element);
+    };
     domTarget.appendChild(button);
   }
 }
 
 /**
- * @param   {HTMLElement}  domTarget  
- * @return  {Void}             
+ * @param   {HTMLElement}  domTarget
+ * @return  {Void}
  */
 function renderDropdownExpansion(domTarget) {
   const isOpen = domTarget.classList.contains("open");
@@ -68,8 +78,8 @@ function renderDropdownExpansion(domTarget) {
 }
 
 /**
- * @param   {HTMLElement}  domTarget  
- * @return  {Void}            
+ * @param   {HTMLElement}  domTarget
+ * @return  {Void}
  */
 function removeDropdownExpansion(domTarget) {
   domTarget.querySelector(".dropdownExpansion").remove();

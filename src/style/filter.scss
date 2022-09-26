@@ -26,13 +26,13 @@ button.filter {
 		background-color: darken($colorAppliance, 10%);
 	}
 }
-.filter.ingredient {
+.filter.ingredients {
   background-color: $colorIngredient;
   &:hover {
     background-color: darken($colorIngredient, 10%);
   }
 }
-.filter.ustensil {
+.filter.ustensils {
   background-color: $colorUstensil;
   &:hover {
     background-color: darken($colorUstensil, 10%);

@@ -74,10 +74,6 @@
     transform: rotate(180deg);
   }
 
-  .dropdownInput {
-    margin-bottom: 0.5rem;
-  }
-
   input {
     width: 500px;
   }
@@ -92,7 +88,7 @@
   border-radius: 0 0 5px 5px;
   grid-template-columns: 35% 35% 30%;
   justify-items: flex-start;
-  padding: 0 1rem 0.5rem 1rem;
+  padding: 0.5rem 1rem;
 
   button {
     font-size: 1.125rem;

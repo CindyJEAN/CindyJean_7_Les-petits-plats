@@ -9,6 +9,7 @@ import { dropdowns } from "../utilities/dataManager.js";
 const main = document.querySelector("main");
 const filtersContainer = document.createElement("div");
 filtersContainer.className = "container";
+filtersContainer.id = "filtersContainer";
 const dropdownsContainer = document.createElement("form");
 dropdownsContainer.className = "container";
 // ----- searchbar rendering ----- //
@@ -16,16 +17,6 @@ renderSearchBar(main);
 
 // ----- filters rendering ----- //
 main.appendChild(filtersContainer);
-
-const filters = [
-  ["Coco", "ingredient"],
-  ["Sucre", "ingredient"],
-  ["Blender", "appliance"],
-];
-//TODO get filters from function in dataManager
-for (const filter of filters) {
-  renderFilter(filtersContainer, filter);
-}
 
 // ----- dropdown rendering ----- //
 main.appendChild(dropdownsContainer);
