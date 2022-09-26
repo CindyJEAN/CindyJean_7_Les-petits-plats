@@ -1,4 +1,4 @@
-import { translate } from "../js/dataManager.js";
+import { translate } from "../utilities/dataManager.js";
 
 /**
  * @param   {HTMLElement}  domTarget
@@ -45,6 +45,10 @@ function renderSuggestions(domTarget, suggestions) {
   }
 }
 
+/**
+ * @param   {HTMLElement}  domTarget  
+ * @return  {Void}             
+ */
 function renderDropdownExpansion(domTarget) {
   const isOpen = domTarget.classList.contains("open");
   let expansion;
@@ -59,9 +63,14 @@ function renderDropdownExpansion(domTarget) {
 
   //TODO dynamique, et enlever exemple
   const suggestions = ["Lait de coco", "Crème de coco"];
+  // @ts-ignore
   renderSuggestions(expansion, suggestions);
 }
 
+/**
+ * @param   {HTMLElement}  domTarget  
+ * @return  {Void}            
+ */
 function removeDropdownExpansion(domTarget) {
   domTarget.querySelector(".dropdownExpansion").remove();
   domTarget.classList.remove("open");

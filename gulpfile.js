@@ -33,7 +33,7 @@ function watch() {
 		server: "./www",
 	});
 
-	gulp.watch(["./src/pages/*.html", "./www/components/*.html"], makePage);
+	gulp.watch("./src/pages/*.html", makePage);
 	gulp.watch("./src/**/*.scss", makeCss);
 	gulp.watch("./www").on("change", browserSync.reload);
 }

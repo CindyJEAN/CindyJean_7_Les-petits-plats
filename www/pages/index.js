@@ -1,10 +1,10 @@
-import { getRecipeById } from "./dataManager.js";
+import { getRecipeById } from "../utilities/dataManager.js";
 import { recipes } from "../content/recipes.js";
 import { renderFilter } from "../components/filter.js";
 import { renderRecipe } from "../components/recipe.js";
 import { renderSearchBar } from "../components/searchBar.js";
 import { renderDropdown } from "../components/dropdown.js";
-import { dropdowns } from "./dataManager.js";
+import { dropdowns } from "../utilities/dataManager.js";
 
 const main = document.querySelector("main");
 const filtersContainer = document.createElement("div");
