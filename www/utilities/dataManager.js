@@ -1,4 +1,3 @@
-// TODO write typedef recipe
 import { recipes } from "../content/recipes.js";
 const translate = {
   appliance: "Appareil",
@@ -6,6 +5,7 @@ const translate = {
   ingredients: "Ingrédients",
 };
 let data;
+// const initialRecipes = [...recipes];
 const filters = [];
 const dropdowns = ["ingredients", "appliance", "ustensils"];
 
@@ -26,6 +26,7 @@ function getRecipeById(id) {
   }
 }
 
+// ----- filters functions ----- //
 /**
  * Remove filter from filters array
  * @param   {Array}  filter
@@ -46,7 +47,60 @@ function addFilter(filter) {
   console.log(filters);
 }
 
-function search(input) {}
+// ----- search ----- //
+/**
+ * @param   {String}  input    search input
+ * @return  {Array}           array of recipe ids
+ */
+function getFilteredRecipes(input, recipes) {
+  const updatedRecipes = [];
+  // let updatedRecipes = [];
+  console.log("start", updatedRecipes);
+  const searchedString = input.toLowerCase();
+  //--- search in recipe name
+  //try 1
+  // updatedRecipes = recipes.filter((recipe) => {
+  //   const isIncluded = recipe.name.toLowerCase().includes(searchedString);
+  //   console.log(searchedString, recipe.name.toLowerCase(), isIncluded)
+  // });
+  //try 2
+  // recipes.forEach((recipe) => {
+  //   const isIncluded = recipe.name.toLowerCase().includes(searchedString);
+  //   if (isIncluded) {
+  //     updatedRecipes.push(recipe.id);
+  //   }
+  // });
+  // console.log("after name search", updatedRecipes);
+  // recipes.forEach((recipe) => {
+  //   const isIncluded = recipe.description.toLowerCase().includes(searchedString);
+  //   if (isIncluded) {
+  //     updatedRecipes.push(recipe.id);
+  //   }
+  // });
+  // console.log("after description search", updatedRecipes);
+  recipes.forEach((recipe) => {
+    const isIncludedInName = recipe.name.toLowerCase().includes(searchedString);
+    if (isIncludedInName) {
+      updatedRecipes.push(recipe.id);
+    }
+    console.log("after name search", updatedRecipes);
+    if (!isIncludedInName) {
+      const isIncludedInDescription = recipe.description
+        .toLowerCase()
+        .includes(searchedString);
+      if (isIncludedInDescription) {
+        updatedRecipes.push(recipe.id);
+      }
+      console.log("after description search", updatedRecipes);
+    }
+  });
+  //TODO simplify isIncluded?
+  //TODO add for loop version
+  //TODO add other search (ingredients)
+  const set = [...new Set(updatedRecipes)];
+  console.log("set", set);
+  return set;
+}
 
 export {
   initData,
@@ -55,4 +109,5 @@ export {
   translate,
   removeFilter,
   addFilter,
+  getFilteredRecipes,
 };

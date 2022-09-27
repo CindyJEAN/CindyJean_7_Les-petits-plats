@@ -19,14 +19,4 @@ function renderFilter(domTarget, filter) {
   domTarget.appendChild(element);
 }
 
-// /**
-//  * Remove filter from filters array
-//  * @param   {Array}  filter
-//  * @return  {Void}
-//  */
-//  function removeFilter(filter) {
-//   const index = filters.indexOf(filter);
-//   filters.splice(index, 1);
-// }
-
 export { renderFilter };

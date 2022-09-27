@@ -2,7 +2,8 @@ import {
   removeDropdownExpansion,
   renderDropdownExpansion,
 } from "../components/dropdown.js";
-import { dropdowns } from "./dataManager.js";
+import { recipes } from "../content/recipes.js";
+import { dropdowns, getFilteredRecipes } from "./dataManager.js";
 
 /**
  * @type   {HTMLInputElement}
@@ -11,6 +12,7 @@ const searchBar = document.querySelector("#searchBar");
 searchBar?.addEventListener("input", function (e) {
   console.log(searchBar.value);
   // if (element.value.length >= 3)
+  getFilteredRecipes("coco", recipes);
 });
 
 for (const dropdown of dropdowns) {
