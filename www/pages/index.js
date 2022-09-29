@@ -38,3 +38,4 @@ let recipesToShow = initialRecipes;
 for (const recipe of recipesToShow) {
   renderRecipe(main, getRecipeById(recipe));
 }
+export { initialRecipes};

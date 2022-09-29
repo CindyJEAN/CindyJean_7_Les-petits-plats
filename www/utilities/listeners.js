@@ -3,6 +3,7 @@ import {
   renderDropdownExpansion,
 } from "../components/dropdown.js";
 import { recipes } from "../content/recipes.js";
+import { initialRecipes } from "../pages/index.js";
 import { dropdowns, getFilteredRecipes } from "./dataManager.js";
 
 /**
@@ -10,9 +11,11 @@ import { dropdowns, getFilteredRecipes } from "./dataManager.js";
  */
 const searchBar = document.querySelector("#searchBar");
 searchBar?.addEventListener("input", function (e) {
-  console.log(searchBar.value);
-  // if (element.value.length >= 3)
-  getFilteredRecipes("coco", recipes);
+  const input = searchBar.value;
+  if (input.length >= 3) {
+    getFilteredRecipes(input, recipes);
+  }
+  else console.log("recipes", initialRecipes);
 });
 
 for (const dropdown of dropdowns) {
@@ -50,4 +53,7 @@ function addDropdownInputListener(id) {
     });
   });
 }
+
+
+
 
