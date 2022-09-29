@@ -1,4 +1,4 @@
-import { getFilteredRecipes, getRecipeById } from "../utilities/dataManager.js";
+import { getRecipeById, initialRecipes } from "../utilities/dataManager.js";
 import { recipes } from "../content/recipes.js";
 import { renderRecipe } from "../components/recipe.js";
 import { renderSearchBar } from "../components/searchBar.js";
@@ -24,18 +24,18 @@ for (const dropdown of dropdowns) {
 }
 
 // ----- recipes rendering ----- //
-const initialRecipes = [];
-//TODO get initialRecipes from DataManager
-for (let i = 1; i <= recipes.length; i++) {
-  initialRecipes.push(i);
-}
-//TODO get filteredRecipes from DataManager
-const filteredRecipes = [1, 3, 8, 10];
-
-let recipesToShow = initialRecipes;
-// let recipesToShow = filteredRecipes;
-
-for (const recipe of recipesToShow) {
+for (const recipe of initialRecipes) {
   renderRecipe(main, getRecipeById(recipe));
 }
-export { initialRecipes};
+
+function updateRecipeCards(recipesToShow) {
+  const articles = main.querySelectorAll("article.recipe");
+  if (articles) {
+    articles.forEach((button) => button.remove());
+  }
+  for (const recipe of recipesToShow) {
+    renderRecipe(main, getRecipeById(recipe));
+  }
+}
+export { updateRecipeCards };
+

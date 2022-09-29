@@ -1,14 +1,24 @@
 import { recipes } from "../content/recipes.js";
+import { getIsInString } from "./helper.js";
 const translate = {
   appliance: "Appareil",
   ustensils: "Ustensiles",
   ingredients: "Ingrédients",
 };
 let data;
-// const initialRecipes = [...recipes];
-const filters = [];
+
 const dropdowns = ["ingredients", "appliance", "ustensils"];
 
+const initialRecipes = [];
+for (let i = 1; i <= recipes.length; i++) {
+  initialRecipes.push(i);
+}
+
+const filters = [];
+let recipesFilteredFromSearchData = [];
+
+
+/**  ------- functions ------- */
 function initData() {
   data = [...recipes];
 }
@@ -168,12 +178,11 @@ function getFilteredRecipes(input, recipes) {
   // }
 
   console.log("updatedRecipes", updatedRecipes);
+  recipesFilteredFromSearchData = [...updatedRecipes];
   return updatedRecipes;
 }
 
-function getIsInString(searchedString, string) {
-  return string.toLowerCase().includes(searchedString);
-}
+
 export {
   initData,
   getRecipeById,
@@ -182,4 +191,6 @@ export {
   removeFilter,
   addFilter,
   getFilteredRecipes,
+  recipesFilteredFromSearchData,
+  initialRecipes
 };

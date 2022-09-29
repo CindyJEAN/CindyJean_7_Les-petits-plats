@@ -3,8 +3,8 @@ import {
   renderDropdownExpansion,
 } from "../components/dropdown.js";
 import { recipes } from "../content/recipes.js";
-import { initialRecipes } from "../pages/index.js";
-import { dropdowns, getFilteredRecipes } from "./dataManager.js";
+import { updateRecipeCards } from "../pages/index.js";
+import { dropdowns, getFilteredRecipes, initialRecipes } from "./dataManager.js";
 
 /**
  * @type   {HTMLInputElement}
@@ -13,9 +13,10 @@ const searchBar = document.querySelector("#searchBar");
 searchBar?.addEventListener("input", function (e) {
   const input = searchBar.value;
   if (input.length >= 3) {
-    getFilteredRecipes(input, recipes);
+    const filteredRecipes = getFilteredRecipes(input, recipes);
+    updateRecipeCards(filteredRecipes);
   }
-  else console.log("recipes", initialRecipes);
+  else updateRecipeCards(initialRecipes);
 });
 
 for (const dropdown of dropdowns) {
