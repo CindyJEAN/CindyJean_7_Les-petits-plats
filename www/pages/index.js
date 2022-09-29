@@ -28,9 +28,10 @@ for (const recipe of initialRecipes) {
   renderRecipe(main, getRecipeById(recipe));
 }
 
+// ----- functions ----- //
 function updateRecipeCards(recipesToShow) {
   const articles = main.querySelectorAll("article.recipe");
-  if (articles) {
+  if (articles) { //pas .length?
     articles.forEach((button) => button.remove());
   }
   for (const recipe of recipesToShow) {

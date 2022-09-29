@@ -2,27 +2,22 @@ import {
   removeDropdownExpansion,
   renderDropdownExpansion,
 } from "../components/dropdown.js";
+import { renderNoMatchText } from "../components/recipe.js";
 import { recipes } from "../content/recipes.js";
 import { updateRecipeCards } from "../pages/index.js";
-import { dropdowns, getFilteredRecipes, initialRecipes } from "./dataManager.js";
+import {
+  dropdowns,
+  getFilteredRecipes,
+  initialRecipes,
+} from "./dataManager.js";
 
 /**
  * @type   {HTMLInputElement}
  */
 const searchBar = document.querySelector("#searchBar");
-searchBar?.addEventListener("input", function (e) {
-  const input = searchBar.value;
-  if (input.length >= 3) {
-    const filteredRecipes = getFilteredRecipes(input, recipes);
-    updateRecipeCards(filteredRecipes);
-  }
-  else updateRecipeCards(initialRecipes);
-});
+const main = document.querySelector("main");
 
-for (const dropdown of dropdowns) {
-  addDropdownInputListener(dropdown);
-  // handleClickOutsideListener(dropdown);
-}
+searchBar?.addEventListener("input", handleSearchBarInput);
 
 /**
  * add eventListener on input change and opens or closes dropdown
@@ -40,7 +35,6 @@ function addDropdownInputListener(id) {
     renderDropdownExpansion(dropdown);
   });
 
-
   const buttons = dropdown.querySelectorAll("button");
   buttons.forEach((button) => {
     button.addEventListener("click", function (e) {
@@ -55,6 +49,34 @@ function addDropdownInputListener(id) {
   });
 }
 
+/**
+ * displays recipes depending on input :
+ * - if more than 3 letters : launches search and displays results
+ * - if no match : displays a text
+ * - if less letters : displays all the recipes
+ * @param   {Event}  e 
+ * @return  {Void}   
+ */
+function handleSearchBarInput(e) {//move to searchBar.js ?
+  const noMatchText = document.querySelector("#helperText");
+  if (noMatchText) {
+    noMatchText.remove();
+  }
+
+  const input = searchBar.value;
+  if (input.length >= 3) {
+    const filteredRecipes = getFilteredRecipes(input, recipes);
+    updateRecipeCards(filteredRecipes);
+
+    if (!filteredRecipes.length) {
+      renderNoMatchText(main);
+    }
+  } else updateRecipeCards(initialRecipes);
+}
 
 
 
+for (const dropdown of dropdowns) {
+  addDropdownInputListener(dropdown);
+  // handleClickOutsideListener(dropdown);
+}

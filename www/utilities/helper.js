@@ -8,10 +8,4 @@ function getIsInString(searchedString, string) {
   return string.toLowerCase().includes(searchedString);
 }
 
-function checkAndRemove(elements) {
-  if (elements) {
-    elements.forEach((element) => element.remove());
-  }
-}
-
 export { getIsInString };

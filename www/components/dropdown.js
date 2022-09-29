@@ -1,4 +1,8 @@
-import { addFilter, removeFilter, translate } from "../utilities/dataManager.js";
+import {
+  addFilter,
+  removeFilter,
+  translate,
+} from "../utilities/dataManager.js";
 import { renderFilter } from "./filter.js";
 
 /**
@@ -12,6 +16,9 @@ function renderDropdown(domTarget, category) {
   dropdown.id = category;
   dropdown.className = "dropdown";
   const label = translate[category];
+  // const isOpen = dropdown.classList.contains("open");
+  // console.log(isOpen);
+  // const placeholder = isOpen ? "Rechercher un " + label.toLowerCase() : label;
 
   dropdown.innerHTML = `
   <fieldset class="dropdownInput">
@@ -26,33 +33,6 @@ function renderDropdown(domTarget, category) {
   `;
 
   domTarget.appendChild(dropdown);
-}
-
-/**
- * @param   {HTMLElement}  domTarget
- * @param   {Array}  suggestions
- * @return  {Void}
- */
-function renderSuggestions(domTarget, suggestions) {
-  const container = document.querySelector("#filtersContainer");
-  const category = domTarget.parentElement.id;
-  const buttons = domTarget.querySelectorAll("button");
-  if (buttons) {
-    buttons.forEach((button) => button.remove());
-  }
-
-  for (const element of suggestions) {
-    const button = document.createElement("button");
-    button.innerText = element;
-    button.onclick = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      // @ts-ignore
-      renderFilter(container, [element, category]);
-      addFilter(element);
-    };
-    domTarget.appendChild(button);
-  }
 }
 
 /**
@@ -75,6 +55,34 @@ function renderDropdownExpansion(domTarget) {
   const suggestions = ["Lait de coco", "Crème de coco"];
   // @ts-ignore
   renderSuggestions(expansion, suggestions);
+}
+
+/**
+ * @param   {HTMLElement}  domTarget
+ * @param   {Array}  suggestions
+ * @return  {Void}
+ */
+function renderSuggestions(domTarget, suggestions) {
+  const container = document.querySelector("#filtersContainer");
+  const category = domTarget.parentElement.id;
+  const buttons = domTarget.querySelectorAll("button");
+  if (buttons) {
+    //pas .length?
+    buttons.forEach((button) => button.remove());
+  }
+
+  for (const element of suggestions) {
+    const button = document.createElement("button");
+    button.innerText = element;
+    button.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      // @ts-ignore
+      renderFilter(container, [element, category]);
+      addFilter(element);
+    };
+    domTarget.appendChild(button);
+  }
 }
 
 /**

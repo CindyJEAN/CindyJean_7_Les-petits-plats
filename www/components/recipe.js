@@ -1,5 +1,8 @@
 import { renderIngredient } from "./ingredient.js";
 
+const noMatchText =
+  "Aucune recette ne correspond à votre critère… Vous pouvez chercher « tarte aux pommes », « poisson », etc.";
+
 /**
  * @param   {HTMLElement}  domTarget
  * @param   {Object}  recipe
@@ -31,4 +34,15 @@ function renderRecipe(domTarget, recipe) {
   domTarget.appendChild(card);
 }
 
-export { renderRecipe };
+/**
+ * @param   {HTMLElement}  domTarget
+ * @return  {Void}
+ */
+function renderNoMatchText (domTarget) {
+  const noMatch = document.createElement("p");
+  noMatch.innerText = noMatchText;
+  noMatch.id = "helperText";
+  domTarget.appendChild(noMatch);
+}
+
+export { renderRecipe, renderNoMatchText };

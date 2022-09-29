@@ -12,7 +12,7 @@ function renderSearchBar(domTarget) {
 		type="search"
 		id="searchBar"
 		name="recipeSearch"
-		placeholder="Rechercher un ingrédient, appareil, ustentsile ou une recette"
+		placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette"
 	/>
   <button></button>
   `;
