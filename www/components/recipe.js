@@ -1,7 +1,7 @@
 import { renderIngredient } from "./ingredient.js";
 
 const noMatchText =
-  "Aucune recette ne correspond à votre critère… Vous pouvez chercher « tarte aux pommes », « poisson », etc.";
+  "Aucune recette ne correspond à vos critères… Vous pouvez chercher « tarte aux pommes », « poisson », etc.";
 
 /**
  * @param   {HTMLElement}  domTarget

@@ -14,8 +14,7 @@ for (let i = 1; i <= recipes.length; i++) {
 
 let data;
 const filters = [];
-let recipesFilteredFromSearchData = [];
-// let recipesToShow = [];
+let recipesToShow = [...initialRecipes];
 let searchInput = "";
 
 /**  ------- functions ------- */
@@ -119,9 +118,7 @@ function filterRecipesFromInput() {
   //   }
   // }
 
-  // console.log("updatedRecipes", updatedRecipes);
-  recipesFilteredFromSearchData = [...updatedRecipes];
-  // return updatedRecipes;
+  return updatedRecipes;
 }
 
 /**
@@ -170,24 +167,38 @@ function filterRecipesFromTags(recipeIds) {
 
 // ----- functions that return data ----- //
 function getFilteredRecipes() {
-  filterRecipesFromInput();
   let updatedRecipes = [];
-  updatedRecipes = [...recipesFilteredFromSearchData];
-  //TODO change recipesFilteredFromSearchData scope from file to this function ??
+  if (searchInput !== "") {
+    updatedRecipes = filterRecipesFromInput();
+  } else updatedRecipes = [...initialRecipes];
 
   if (filters.length) {
     updatedRecipes = filterRecipesFromTags(updatedRecipes);
   }
+  console.log(updatedRecipes);
 
-  // console.log("updatedRecipes", updatedRecipes);
+  recipesToShow = updatedRecipes;
   return updatedRecipes;
-  // return recipesToShow;
 }
 
 function getSuggestions(category) {
   const suggestions = [];
-  recipesFilteredFromSearchData.forEach((recipe) => {});
-  //Set
+  console.log("recipesToShow", recipesToShow);
+  recipesToShow.forEach((el) => {
+    const recipe = recipes.find((recipe) => recipe.id === el);
+    switch (category) {
+      case "appliance":
+        suggestions.push(recipe.appliance);
+        break;
+        case "ustensils":
+          suggestions.push(...recipe.ustensils);
+          break;
+          case "ingredients":
+            suggestions.push(...recipe.ingredients.map(el => el.ingredient));
+          break;
+    }
+  });
+  return new Set(suggestions);
 }
 
 export {

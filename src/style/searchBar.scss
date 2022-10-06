@@ -11,10 +11,17 @@ form.searchBar {
     width: calc(100% - 4.5rem);
     font-size: 1.125rem;
     padding: 0 1rem;
+    
+    &:focus-visible {
+      outline: none;
+    }
   }
 
-  button {
+  div {
     width: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &::after {
       font-family: "Font Awesome 5 Free";

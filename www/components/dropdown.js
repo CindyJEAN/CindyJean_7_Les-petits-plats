@@ -63,18 +63,16 @@ function renderDropdownExpansion(domTarget) {
  * @return  {Void}
  */
 function renderSuggestions(domTarget) {
-  const suggestions = ["Lait de coco", "Crème de coco"];
   const container = document.querySelector("#filtersContainer");
   const category = domTarget.parentElement.id;
 
-  const tags = getSuggestions(category);
-  // console.log("tags", tags);
+  const suggestions = getSuggestions(category);
+  console.log("suggestions", suggestions);
 
   const buttons = domTarget.querySelectorAll("button");
   if (buttons) {
     //pas .length?
     buttons.forEach((button) => button.remove());
-    updateRecipeCards(getFilteredRecipes());
   }
 
   for (const element of suggestions) {

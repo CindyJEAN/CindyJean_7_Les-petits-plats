@@ -70,6 +70,10 @@
 }
 
 .dropdown.open {
+  ::placeholder {
+    opacity: 0.8;
+  }
+  
   button.icon {
     transform: rotate(180deg);
   }
@@ -84,17 +88,23 @@
   margin-top: -10px;
   width: calc(100% - 2rem);
   display: grid;
+  justify-content: space-between;
+  align-items: flex-start;
 
   border-radius: 0 0 5px 5px;
-  grid-template-columns: 35% 35% 30%;
+  grid-template-columns: 33% 33% 30%;
   justify-items: flex-start;
   padding: 0.5rem 1rem;
+
+  max-height: 300px;
+  overflow-y: auto;
 
   button {
     font-size: 1.125rem;
     color: white;
     padding: 0;
     margin-bottom: 0.8rem;
+    text-align: start;
   }
 }
 
