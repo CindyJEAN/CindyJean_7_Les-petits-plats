@@ -55,10 +55,11 @@ function addDropdownInputListener(id) {
  * - if more than 3 letters : launches search and displays results
  * - if no match : displays a text
  * - if less letters : displays all the recipes
- * @param   {Event}  e 
- * @return  {Void}   
+ * @param   {Event}  e
+ * @return  {Void}
  */
-function handleSearchBarInput(e) {//move to searchBar.js ?
+function handleSearchBarInput(e) {
+  //move to searchBar.js ?
   const noMatchText = document.querySelector("#helperText");
   if (noMatchText) {
     noMatchText.remove();
@@ -76,8 +77,6 @@ function handleSearchBarInput(e) {//move to searchBar.js ?
     }
   } else updateRecipeCards(initialRecipes);
 }
-
-
 
 for (const dropdown of dropdowns) {
   addDropdownInputListener(dropdown);

@@ -1,5 +1,7 @@
+import { updateRecipeCards } from "../pages/index.js";
 import {
   addFilter,
+  getFilteredRecipes,
   getSuggestions,
   removeFilter,
   translate,
@@ -68,11 +70,11 @@ function renderSuggestions(domTarget) {
   const tags = getSuggestions(category);
   // console.log("tags", tags);
 
-
   const buttons = domTarget.querySelectorAll("button");
   if (buttons) {
     //pas .length?
     buttons.forEach((button) => button.remove());
+    updateRecipeCards(getFilteredRecipes());
   }
 
   for (const element of suggestions) {
@@ -85,6 +87,7 @@ function renderSuggestions(domTarget) {
       renderFilter(container, [element, category]);
       // @ts-ignore
       addFilter([element, category]);
+      updateRecipeCards(getFilteredRecipes());
     };
     domTarget.appendChild(button);
   }

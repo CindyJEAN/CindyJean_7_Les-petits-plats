@@ -1,4 +1,5 @@
-import { removeFilter } from "../utilities/dataManager.js";
+import { updateRecipeCards } from "../pages/index.js";
+import { getFilteredRecipes, removeFilter } from "../utilities/dataManager.js";
 
 /**
  * @param   {HTMLElement}  domTarget
@@ -14,6 +15,8 @@ function renderFilter(domTarget, filter) {
   element.onclick = () => {
     removeFilter(filter);
     element.remove();
+    
+    updateRecipeCards(getFilteredRecipes());
   };
 
   domTarget.appendChild(element);

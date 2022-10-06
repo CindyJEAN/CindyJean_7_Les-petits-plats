@@ -15,7 +15,7 @@ for (let i = 1; i <= recipes.length; i++) {
 let data;
 const filters = [];
 let recipesFilteredFromSearchData = [];
-let recipesToShow = [];
+// let recipesToShow = [];
 let searchInput = "";
 
 /**  ------- functions ------- */
@@ -43,9 +43,10 @@ function getRecipeById(id) {
  * @return  {Void}
  */
 function removeFilter(filter) {
-  const index = filters.indexOf(filter);
+  const index = filters.findIndex(
+    (element) => element[0] === filter[0] && element[0] === filter[0]
+  );
   filters.splice(index, 1);
-  console.log("filters", filters);
 }
 
 /**
@@ -55,7 +56,6 @@ function removeFilter(filter) {
  */
 function addFilter(filter) {
   filters.push(filter);
-  console.log("filters", filters);
 }
 
 // ----- search ----- //
@@ -171,11 +171,15 @@ function filterRecipesFromTags(recipeIds) {
 // ----- functions that return data ----- //
 function getFilteredRecipes() {
   filterRecipesFromInput();
-  console.log("recipesFilteredFromSearchData", recipesFilteredFromSearchData);
+  let updatedRecipes = [];
+  updatedRecipes = [...recipesFilteredFromSearchData];
   //TODO change recipesFilteredFromSearchData scope from file to this function ??
 
-  const updatedRecipes = filterRecipesFromTags(recipesFilteredFromSearchData);
+  if (filters.length) {
+    updatedRecipes = filterRecipesFromTags(updatedRecipes);
+  }
 
+  // console.log("updatedRecipes", updatedRecipes);
   return updatedRecipes;
   // return recipesToShow;
 }
