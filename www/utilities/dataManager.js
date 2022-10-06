@@ -15,6 +15,8 @@ for (let i = 1; i <= recipes.length; i++) {
 let data;
 const filters = [];
 let recipesFilteredFromSearchData = [];
+let recipesToShow = [];
+let searchInput = "";
 
 /**  ------- functions ------- */
 function initData() {
@@ -43,6 +45,7 @@ function getRecipeById(id) {
 function removeFilter(filter) {
   const index = filters.indexOf(filter);
   filters.splice(index, 1);
+  console.log("filters", filters);
 }
 
 /**
@@ -52,18 +55,18 @@ function removeFilter(filter) {
  */
 function addFilter(filter) {
   filters.push(filter);
-  // console.log(filters);
+  console.log("filters", filters);
 }
 
 // ----- search ----- //
-/**
- * @param   {String}  input    search input
- * @return  {Array}           array of recipe ids
- */
-function getFilteredRecipes(input, recipes) {
+function applyInput(input) {
+  searchInput = input;
+}
+
+function filterRecipesFromInput() {
   const updatedRecipes = [];
-  console.log("start", updatedRecipes);
-  const searchedString = input.toLowerCase();
+  // console.log("start", updatedRecipes);
+  const searchedString = searchInput.toLowerCase();
 
   // V1 (foreach)
   recipes.forEach((recipe) => {
@@ -116,9 +119,71 @@ function getFilteredRecipes(input, recipes) {
   //   }
   // }
 
-  console.log("updatedRecipes", updatedRecipes);
+  // console.log("updatedRecipes", updatedRecipes);
   recipesFilteredFromSearchData = [...updatedRecipes];
+  // return updatedRecipes;
+}
+
+/**
+ * @param   {Array}  recipeIds  ids of recipes to search tags in
+ * @return  {Array}             recipe ids that match the tags
+ */
+function filterRecipesFromTags(recipeIds) {
+  // const recipesToFilter = recipes.filter((recipe) =>
+  //   recipeIds.includes(recipe.id)
+  // );
+  const updatedRecipes = [];
+
+  for (const id of recipeIds) {
+    const recipe = recipes.find((recipe) => recipe.id === id);
+    const tagsFound = [];
+
+    for (const element of filters) {
+      const tag = element[0].toLowerCase();
+      const category = element[1];
+
+      switch (category) {
+        case "appliance":
+          if (recipe.appliance.toLowerCase() === tag) tagsFound.push(tag);
+          //TODO more simple way to count?
+          break;
+        case "ustensils":
+          const index = recipe.ustensils.findIndex(
+            (el) => el.toLowerCase() === tag
+          );
+          if (index >= 0) tagsFound.push(tag);
+          break;
+        case "ingredients":
+          const isInIngredients = recipe.ingredients.some(
+            (el) => el.ingredient.toLowerCase() === tag
+          );
+          if (isInIngredients) tagsFound.push(tag);
+          break;
+      }
+    }
+    const hasTags = tagsFound.length === filters.length;
+    if (hasTags) updatedRecipes.push(id);
+  }
+
   return updatedRecipes;
+}
+
+// ----- functions that return data ----- //
+function getFilteredRecipes() {
+  filterRecipesFromInput();
+  console.log("recipesFilteredFromSearchData", recipesFilteredFromSearchData);
+  //TODO change recipesFilteredFromSearchData scope from file to this function ??
+
+  const updatedRecipes = filterRecipesFromTags(recipesFilteredFromSearchData);
+
+  return updatedRecipes;
+  // return recipesToShow;
+}
+
+function getSuggestions(category) {
+  const suggestions = [];
+  recipesFilteredFromSearchData.forEach((recipe) => {});
+  //Set
 }
 
 export {
@@ -128,7 +193,9 @@ export {
   translate,
   removeFilter,
   addFilter,
-  getFilteredRecipes,
-  // recipesFilteredFromSearchData,
+  filterRecipesFromInput,
   initialRecipes,
+  getSuggestions,
+  getFilteredRecipes,
+  applyInput,
 };

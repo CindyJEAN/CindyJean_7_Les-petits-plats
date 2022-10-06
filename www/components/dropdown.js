@@ -1,5 +1,6 @@
 import {
   addFilter,
+  getSuggestions,
   removeFilter,
   translate,
 } from "../utilities/dataManager.js";
@@ -51,20 +52,23 @@ function renderDropdownExpansion(domTarget) {
     domTarget.classList.add("open");
   }
 
-  //TODO dynamique, et enlever exemple
-  const suggestions = ["Lait de coco", "Crème de coco"];
   // @ts-ignore
-  renderSuggestions(expansion, suggestions);
+  renderSuggestions(expansion);
 }
 
 /**
  * @param   {HTMLElement}  domTarget
- * @param   {Array}  suggestions
  * @return  {Void}
  */
-function renderSuggestions(domTarget, suggestions) {
+function renderSuggestions(domTarget) {
+  const suggestions = ["Lait de coco", "Crème de coco"];
   const container = document.querySelector("#filtersContainer");
   const category = domTarget.parentElement.id;
+
+  const tags = getSuggestions(category);
+  // console.log("tags", tags);
+
+
   const buttons = domTarget.querySelectorAll("button");
   if (buttons) {
     //pas .length?
@@ -79,7 +83,8 @@ function renderSuggestions(domTarget, suggestions) {
       e.stopPropagation();
       // @ts-ignore
       renderFilter(container, [element, category]);
-      addFilter(element);
+      // @ts-ignore
+      addFilter([element, category]);
     };
     domTarget.appendChild(button);
   }

@@ -3,10 +3,11 @@ import {
   renderDropdownExpansion,
 } from "../components/dropdown.js";
 import { renderNoMatchText } from "../components/recipe.js";
-import { recipes } from "../content/recipes.js";
 import { updateRecipeCards } from "../pages/index.js";
 import {
+  applyInput,
   dropdowns,
+  // filterRecipesFromInput,
   getFilteredRecipes,
   initialRecipes,
 } from "./dataManager.js";
@@ -65,7 +66,9 @@ function handleSearchBarInput(e) {//move to searchBar.js ?
 
   const input = searchBar.value;
   if (input.length >= 3) {
-    const filteredRecipes = getFilteredRecipes(input, recipes);
+    // filterRecipesFromInput(input);
+    applyInput(input);
+    const filteredRecipes = getFilteredRecipes();
     updateRecipeCards(filteredRecipes);
 
     if (!filteredRecipes.length) {
