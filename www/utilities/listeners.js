@@ -81,23 +81,23 @@ function handleSearchBarInput(e) {
 
 for (const dropdown of dropdowns) {
   addDropdownInputListener(dropdown);
-  // handleClickOutsideListener(dropdown);
+  const element = document?.querySelector("#" + dropdown);
+  handleClickOutsideListener(element);
 }
 
-// function handleClickOutsideListener(dropdown) {
-//   console.log(dropdown);
+function handleClickOutsideListener(dropdown) {
+  window.addEventListener("click", addClickOutsideListener.bind(null,dropdown));
+}
 
-//   window.addEventListener("click", addClickOutsideListener.bind(dropdown));
-//   //TODO add listener when expansion + remove when closes
-//   //TODO pass dropdown as prop from dropdown.js, instead of id
-// }
+function addClickOutsideListener(dropdown, e) {
+  if (!dropdown.contains(e.target)) {
+    const isOpen = dropdown.classList.contains("open");
+    if (isOpen) {
+      removeDropdownExpansion(dropdown);
+      window.removeEventListener("click", addClickOutsideListener)
+    }
+  }
+}
 
-// function addClickOutsideListener(dropdown, e) {
-//   console.log(dropdown);
-//   if (!dropdown.contains(e.target)) {
-//     removeDropdownExpansion(dropdown);
-//     window.removeEventListener("click", addClickOutsideListener)
-//   }
-// }
 
-// export { handleClickOutsideListener };
+export { handleClickOutsideListener };

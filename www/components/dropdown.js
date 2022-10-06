@@ -6,7 +6,6 @@ import {
   removeFilter,
   translate,
 } from "../utilities/dataManager.js";
-// import { handleClickOutsideListener } from "../utilities/listeners.js";
 import { renderFilter } from "./filter.js";
 
 /**
@@ -20,9 +19,9 @@ function renderDropdown(domTarget, category) {
   dropdown.id = category;
   dropdown.className = "dropdown";
   const label = translate[category];
-  // const isOpen = dropdown.classList.contains("open");
+  const isOpen = dropdown.classList.contains("open");
   // console.log(isOpen);
-  // const placeholder = isOpen ? "Rechercher un " + label.toLowerCase() : label;
+  const placeholder = isOpen ? "Rechercher un " + label.toLowerCase() : label;
 
   dropdown.innerHTML = `
   <fieldset class="dropdownInput">
@@ -46,20 +45,21 @@ function renderDropdown(domTarget, category) {
 function renderDropdownExpansion(domTarget) {
   const isOpen = domTarget.classList.contains("open");
   let expansion;
+  const input = domTarget.querySelector("input");
+  const category = domTarget.id;
+
   if (isOpen) {
     expansion = domTarget.querySelector(".dropdownExpansion");
-  // handleClickOutsideListener(domTarget);
-
   } else {
     expansion = document.createElement("div");
     expansion.className = "dropdownExpansion";
     domTarget.appendChild(expansion);
     domTarget.classList.add("open");
+    input.setAttribute("placeholder", getPlaceholder(category));
   }
 
   // @ts-ignore
   renderSuggestions(expansion);
-
 }
 
 /**
@@ -100,8 +100,23 @@ function renderSuggestions(domTarget) {
  * @return  {Void}
  */
 function removeDropdownExpansion(domTarget) {
+  const input = domTarget.querySelector("input");
+  const category = domTarget.id;
+  input.setAttribute("placeholder", translate[category]);
   domTarget.querySelector(".dropdownExpansion").remove();
   domTarget.classList.remove("open");
 }
 
 export { renderDropdown, renderDropdownExpansion, removeDropdownExpansion };
+
+function getPlaceholder(category) {
+  const base = "Rechercher un ";
+  switch (category) {
+    case "ingredients":
+      return base + "ingrédient";
+    case "appliance":
+      return base + "appareil";
+    case "ustensils":
+      return base + "ustensile";
+  }
+}
