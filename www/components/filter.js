@@ -1,5 +1,6 @@
 import { updateRecipeCards } from "../pages/index.js";
 import { getFilteredRecipes, removeFilter } from "../utilities/dataManager.js";
+import { renderDropdownExpansion } from "./dropdown.js";
 
 /**
  * @param   {HTMLElement}  domTarget
@@ -17,6 +18,13 @@ function renderFilter(domTarget, filter) {
     element.remove();
     
     updateRecipeCards(getFilteredRecipes());
+
+      /**
+   * @type   {HTMLInputElement}
+   */
+    const dropdown = document.querySelector("#" + filter[1]);
+    renderDropdownExpansion(dropdown);
+    //TODO clean
   };
 
   domTarget.appendChild(element);

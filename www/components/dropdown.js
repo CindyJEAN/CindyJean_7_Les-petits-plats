@@ -6,6 +6,7 @@ import {
   removeFilter,
   translate,
 } from "../utilities/dataManager.js";
+// import { handleClickOutsideListener } from "../utilities/listeners.js";
 import { renderFilter } from "./filter.js";
 
 /**
@@ -47,6 +48,8 @@ function renderDropdownExpansion(domTarget) {
   let expansion;
   if (isOpen) {
     expansion = domTarget.querySelector(".dropdownExpansion");
+  // handleClickOutsideListener(domTarget);
+
   } else {
     expansion = document.createElement("div");
     expansion.className = "dropdownExpansion";
@@ -56,6 +59,7 @@ function renderDropdownExpansion(domTarget) {
 
   // @ts-ignore
   renderSuggestions(expansion);
+
 }
 
 /**
@@ -67,7 +71,6 @@ function renderSuggestions(domTarget) {
   const category = domTarget.parentElement.id;
 
   const suggestions = getSuggestions(category);
-  console.log("suggestions", suggestions);
 
   const buttons = domTarget.querySelectorAll("button");
   if (buttons) {
@@ -86,6 +89,7 @@ function renderSuggestions(domTarget) {
       // @ts-ignore
       addFilter([element, category]);
       updateRecipeCards(getFilteredRecipes());
+      renderDropdownExpansion(domTarget.parentElement);
     };
     domTarget.appendChild(button);
   }

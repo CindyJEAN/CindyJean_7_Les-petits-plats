@@ -46,6 +46,7 @@ function removeFilter(filter) {
     (element) => element[0] === filter[0] && element[0] === filter[0]
   );
   filters.splice(index, 1);
+  console.log("filters");
 }
 
 /**
@@ -168,14 +169,14 @@ function filterRecipesFromTags(recipeIds) {
 // ----- functions that return data ----- //
 function getFilteredRecipes() {
   let updatedRecipes = [];
-  if (searchInput !== "") {
+
+  if (searchInput.length >= 3) {
     updatedRecipes = filterRecipesFromInput();
   } else updatedRecipes = [...initialRecipes];
 
   if (filters.length) {
     updatedRecipes = filterRecipesFromTags(updatedRecipes);
   }
-  console.log(updatedRecipes);
 
   recipesToShow = updatedRecipes;
   return updatedRecipes;
@@ -183,7 +184,7 @@ function getFilteredRecipes() {
 
 function getSuggestions(category) {
   const suggestions = [];
-  console.log("recipesToShow", recipesToShow);
+
   recipesToShow.forEach((el) => {
     const recipe = recipes.find((recipe) => recipe.id === el);
     switch (category) {

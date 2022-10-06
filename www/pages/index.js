@@ -30,7 +30,6 @@ for (const recipe of initialRecipes) {
 
 // ----- functions ----- //
 function updateRecipeCards(recipesToShow) {
-  console.log("recipesToShow", recipesToShow);
   const articles = main.querySelectorAll("article.recipe");
   if (articles) { //pas .length?
     articles.forEach((article) => article.remove());

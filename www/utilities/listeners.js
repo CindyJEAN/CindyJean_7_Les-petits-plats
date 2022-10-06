@@ -66,10 +66,11 @@ function handleSearchBarInput(e) {
   }
 
   const input = searchBar.value;
+  applyInput(input);
+
+  const filteredRecipes = getFilteredRecipes();
+
   if (input.length >= 3) {
-    // filterRecipesFromInput(input);
-    applyInput(input);
-    const filteredRecipes = getFilteredRecipes();
     updateRecipeCards(filteredRecipes);
 
     if (!filteredRecipes.length) {
@@ -82,3 +83,21 @@ for (const dropdown of dropdowns) {
   addDropdownInputListener(dropdown);
   // handleClickOutsideListener(dropdown);
 }
+
+// function handleClickOutsideListener(dropdown) {
+//   console.log(dropdown);
+
+//   window.addEventListener("click", addClickOutsideListener.bind(dropdown));
+//   //TODO add listener when expansion + remove when closes
+//   //TODO pass dropdown as prop from dropdown.js, instead of id
+// }
+
+// function addClickOutsideListener(dropdown, e) {
+//   console.log(dropdown);
+//   if (!dropdown.contains(e.target)) {
+//     removeDropdownExpansion(dropdown);
+//     window.removeEventListener("click", addClickOutsideListener)
+//   }
+// }
+
+// export { handleClickOutsideListener };
