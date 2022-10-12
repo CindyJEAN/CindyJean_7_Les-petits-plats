@@ -182,23 +182,35 @@ function getFilteredRecipes() {
   return updatedRecipes;
 }
 
-function getSuggestions(category) {
-  const suggestions = [];
+function getSuggestions(category, input) {
+  let suggestions = [];
+  const searchedInput = input.length < 3 ? null : input.toLowerCase();
 
   recipesToShow.forEach((el) => {
     const recipe = recipes.find((recipe) => recipe.id === el);
     switch (category) {
       case "appliance":
-        suggestions.push(recipe.appliance);
+        if (!searchedInput || getIsInString(searchedInput, recipe.appliance)) {
+          suggestions.push(recipe.appliance);
+        }
         break;
-        case "ustensils":
-          suggestions.push(...recipe.ustensils);
-          break;
-          case "ingredients":
-            suggestions.push(...recipe.ingredients.map(el => el.ingredient));
-          break;
+      case "ustensils":
+        recipe.ustensils.forEach((ustensil) => {
+          if (!searchedInput || getIsInString(searchedInput, ustensil)) {
+            suggestions.push(ustensil);
+          }
+        });
+        break;
+      case "ingredients":
+        recipe.ingredients.forEach((el) => {
+          if (!searchedInput || getIsInString(searchedInput, el.ingredient)) {
+            suggestions.push(el.ingredient);
+          }
+        });
+        break;
     }
   });
+
   return new Set(suggestions);
 }
 

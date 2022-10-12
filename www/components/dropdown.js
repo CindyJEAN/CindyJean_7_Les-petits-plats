@@ -69,8 +69,12 @@ function renderDropdownExpansion(domTarget) {
 function renderSuggestions(domTarget) {
   const container = document.querySelector("#filtersContainer");
   const category = domTarget.parentElement.id;
+  /**
+   * @type  {HTMLInputElement}          
+   */
+  const input = document.querySelector("#"+category+"Input")
 
-  const suggestions = getSuggestions(category);
+  const suggestions = getSuggestions(category, input.value);
 
   const buttons = domTarget.querySelectorAll("button");
   if (buttons) {

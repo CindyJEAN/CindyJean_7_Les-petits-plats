@@ -1,30 +1,31 @@
 button.filter {
-	font-size: 0.875rem;
-	color: white;
-	font-weight: bold;
-	display: flex;
-	align-items: center;
-	border-radius: 5px;
-	padding: 8px 20px;
-	// height: 2.3rem;
-	text-transform: capitalize;
-	margin-right: 1rem;
-	margin-bottom: 1rem;
-	
-	&::after {
-		content: "\f057";
-		font-family: "Font Awesome 5 Free";
-		font-size: 1.3rem;
-		font-weight: normal;
-		margin-left: 0.5rem;
-	}
+  font-size: 0.875rem;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 8px 20px;
+  // height: 2.3rem;
+  text-transform: capitalize;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+
+  &::after {
+    content: "\f057";
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.3rem;
+    font-weight: normal;
+    margin-left: 0.5rem;
+  }
 }
 
 .filter.appliance {
   background-color: $colorAppliance;
   &:hover {
-		background-color: darken($colorAppliance, 10%);
-	}
+    background-color: darken($colorAppliance, 10%);
+  }
 }
 .filter.ingredients {
   background-color: $colorIngredient;
