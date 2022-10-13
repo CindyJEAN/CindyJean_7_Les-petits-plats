@@ -2,26 +2,19 @@ import {
   removeDropdownExpansion,
   renderDropdownExpansion,
 } from "../components/dropdown.js";
-import { renderNoMatchText } from "../components/recipe.js";
-import { updateRecipeCards } from "../pages/index.js";
-import {
-  applyInput,
-  dropdowns,
-  // filterRecipesFromInput,
-  getFilteredRecipes,
-  initialRecipes,
-} from "./dataManager.js";
+import { handleSearchBarInput } from "../components/searchBar.js";
+import { dropdowns } from "./dataManager.js";
 
 /**
  * @type   {HTMLInputElement}
  */
 const searchBar = document.querySelector("#searchBar");
-const main = document.querySelector("main");
 
 searchBar?.addEventListener("input", handleSearchBarInput);
 
 /**
- * add eventListener on input change and opens or closes dropdown
+ * add eventListener on input change to open dropdown,
+ *  and add eventListener on dropdown button to open or close dropdown
  * @param   {String}  id  dropdown id
  * @return  {Void}
  */
@@ -50,35 +43,7 @@ function addDropdownInputListener(id) {
   });
 }
 
-/**
- * displays recipes depending on input :
- * - if more than 3 letters : launches search and displays results
- * - if no match : displays a text
- * - if less letters : displays all the recipes
- * @param   {Event}  e
- * @return  {Void}
- */
-function handleSearchBarInput(e) {
-  //move to searchBar.js ?
-  const noMatchText = document.querySelector("#helperText");
-  if (noMatchText) {
-    noMatchText.remove();
-  }
-
-  const input = searchBar.value;
-  applyInput(input);
-
-  const filteredRecipes = getFilteredRecipes();
-
-  if (input.length >= 3) {
-    updateRecipeCards(filteredRecipes);
-
-    if (!filteredRecipes.length) {
-      renderNoMatchText(main);
-    }
-  } else updateRecipeCards(initialRecipes);
-}
-
+// ----- click outside dropdown management ----- //
 for (const dropdown of dropdowns) {
   addDropdownInputListener(dropdown);
   const element = document?.querySelector("#" + dropdown);
@@ -86,7 +51,10 @@ for (const dropdown of dropdowns) {
 }
 
 function handleClickOutsideListener(dropdown) {
-  window.addEventListener("click", addClickOutsideListener.bind(null,dropdown));
+  window.addEventListener(
+    "click",
+    addClickOutsideListener.bind(null, dropdown)
+  );
 }
 
 function addClickOutsideListener(dropdown, e) {
@@ -94,10 +62,9 @@ function addClickOutsideListener(dropdown, e) {
     const isOpen = dropdown.classList.contains("open");
     if (isOpen) {
       removeDropdownExpansion(dropdown);
-      window.removeEventListener("click", addClickOutsideListener)
+      window.removeEventListener("click", addClickOutsideListener);
     }
   }
 }
-
 
 export { handleClickOutsideListener };

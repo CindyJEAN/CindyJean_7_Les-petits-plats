@@ -3,15 +3,14 @@ import {
   addFilter,
   getFilteredRecipes,
   getSuggestions,
-  removeFilter,
   translate,
 } from "../utilities/dataManager.js";
 import { renderFilter } from "./filter.js";
 
 /**
+ * Dropdown html
  * @param   {HTMLElement}  domTarget
  * @param   {String}  category
- *
  * @return  {Void}
  */
 function renderDropdown(domTarget, category) {
@@ -19,9 +18,6 @@ function renderDropdown(domTarget, category) {
   dropdown.id = category;
   dropdown.className = "dropdown";
   const label = translate[category];
-  const isOpen = dropdown.classList.contains("open");
-  // console.log(isOpen);
-  const placeholder = isOpen ? "Rechercher un " + label.toLowerCase() : label;
 
   dropdown.innerHTML = `
   <fieldset class="dropdownInput">
@@ -39,6 +35,10 @@ function renderDropdown(domTarget, category) {
 }
 
 /**
+ * @description
+ * First creates dropdown expansion if it wasn't already open,
+ * changes placeholder name,
+ * calls renderSuggestions
  * @param   {HTMLElement}  domTarget
  * @return  {Void}
  */
@@ -63,24 +63,34 @@ function renderDropdownExpansion(domTarget) {
 }
 
 /**
+ * Displays keyword suggestions.
+ * @description
+ * If there are already suggestions displayed, removes them first.
+ * Calls getSuggestions depending on dropdown category and input from user
+ * Then renders every suggestion.
+ * Every suggestion is clickable : it adds a filter, 
+ * then updates recipes to display and suggestions again
  * @param   {HTMLElement}  domTarget
  * @return  {Void}
  */
 function renderSuggestions(domTarget) {
+  /**
+   * @type   {HTMLElement}
+   */
   const container = document.querySelector("#filtersContainer");
   const category = domTarget.parentElement.id;
-  /**
-   * @type  {HTMLInputElement}          
-   */
-  const input = document.querySelector("#"+category+"Input")
-
-  const suggestions = getSuggestions(category, input.value);
 
   const buttons = domTarget.querySelectorAll("button");
   if (buttons) {
-    //pas .length?
     buttons.forEach((button) => button.remove());
   }
+
+  /**
+   * @type  {HTMLInputElement}
+   */
+  const input = document.querySelector("#" + category + "Input");
+
+  const suggestions = getSuggestions(category, input.value);
 
   for (const element of suggestions) {
     const button = document.createElement("button");
@@ -88,9 +98,7 @@ function renderSuggestions(domTarget) {
     button.onclick = (e) => {
       e.preventDefault();
       e.stopPropagation();
-      // @ts-ignore
       renderFilter(container, [element, category]);
-      // @ts-ignore
       addFilter([element, category]);
       updateRecipeCards(getFilteredRecipes());
       renderDropdownExpansion(domTarget.parentElement);
@@ -100,6 +108,7 @@ function renderSuggestions(domTarget) {
 }
 
 /**
+ * Closes dropdown
  * @param   {HTMLElement}  domTarget
  * @return  {Void}
  */
@@ -111,8 +120,11 @@ function removeDropdownExpansion(domTarget) {
   domTarget.classList.remove("open");
 }
 
-export { renderDropdown, renderDropdownExpansion, removeDropdownExpansion };
-
+/**
+ * Returns placeholder text depending on dropdown category
+ * @param   {String}  category  dropdown category
+ * @return  {String}
+ */
 function getPlaceholder(category) {
   const base = "Rechercher un ";
   switch (category) {
@@ -124,3 +136,5 @@ function getPlaceholder(category) {
       return base + "ustensile";
   }
 }
+
+export { renderDropdown, renderDropdownExpansion, removeDropdownExpansion };

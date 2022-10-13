@@ -26,7 +26,6 @@ function initData() {
  * get recipe information
  * @param   {Number}  id
  * @return  {Object}
-
  */
 function getRecipeById(id) {
   if (data === undefined || null) initData();
@@ -37,6 +36,15 @@ function getRecipeById(id) {
 
 // ----- filters functions ----- //
 /**
+ * add filter to filters array
+ * @param   {Array}  filter
+ * @return  {Void}
+ */
+function addFilter(filter) {
+  filters.push(filter);
+}
+
+/**
  * Remove filter from filters array
  * @param   {Array}  filter
  * @return  {Void}
@@ -46,16 +54,6 @@ function removeFilter(filter) {
     (element) => element[0] === filter[0] && element[0] === filter[0]
   );
   filters.splice(index, 1);
-  console.log("filters");
-}
-
-/**
- * add filter to filters array
- * @param   {Array}  filter
- * @return  {Void}
- */
-function addFilter(filter) {
-  filters.push(filter);
 }
 
 // ----- search ----- //
@@ -63,9 +61,17 @@ function applyInput(input) {
   searchInput = input;
 }
 
+/**
+ * Searches input in each recipe's name, description, and ingredients
+ * @description
+ * - searches in name
+ * - if it wasn't in name : searches in description
+ * - if it wasn't in description : searches in ingredients
+ * If a match was found at any step, the id of the recipe is pushed in an array
+ * @return  {Array}  Filtered recipes' ids
+ */
 function filterRecipesFromInput() {
   const updatedRecipes = [];
-  // console.log("start", updatedRecipes);
   const searchedString = searchInput.toLowerCase();
 
   // V1 (foreach)
@@ -123,13 +129,18 @@ function filterRecipesFromInput() {
 }
 
 /**
+ * Filters recipes given with current filters
+ * @description
+ * For every recipe :
+ *   for every filter:
+ *   - search in the category of the filter
+ *   - if there is a match, it's pushed in an array of tags
+ * If the recipe found at least one match in tags, its id is pushed in an array of recipes
+ *
  * @param   {Array}  recipeIds  ids of recipes to search tags in
  * @return  {Array}             recipe ids that match the tags
  */
 function filterRecipesFromTags(recipeIds) {
-  // const recipesToFilter = recipes.filter((recipe) =>
-  //   recipeIds.includes(recipe.id)
-  // );
   const updatedRecipes = [];
 
   for (const id of recipeIds) {
@@ -143,7 +154,6 @@ function filterRecipesFromTags(recipeIds) {
       switch (category) {
         case "appliance":
           if (recipe.appliance.toLowerCase() === tag) tagsFound.push(tag);
-          //TODO more simple way to count?
           break;
         case "ustensils":
           const index = recipe.ustensils.findIndex(
@@ -167,6 +177,13 @@ function filterRecipesFromTags(recipeIds) {
 }
 
 // ----- functions that return data ----- //
+/**
+ * @description
+ * - calls function to filter recipes from current input if the input is at least 3 letters long
+ * - calls function to filter recipes from current filters
+ * Then it applies and returns recipes to show (filtered or initial recipes).
+ * @return  {Array}  
+ */
 function getFilteredRecipes() {
   let updatedRecipes = [];
 
@@ -182,9 +199,20 @@ function getFilteredRecipes() {
   return updatedRecipes;
 }
 
+/**
+ * Gets suggestions for category of dropdown
+ * @description
+ * For each current filtered recipes :
+ *  - depending on category, searches input in the category
+ *  - if there is a match or if there was no input,
+ *  the category's elements are pushed in an array
+ * @param   {String}  category  dropdown category
+ * @param   {String}  input
+ * @return  {Object}            suggestions (without duplicates)
+ */
 function getSuggestions(category, input) {
   let suggestions = [];
-  const searchedInput = input.length < 3 ? null : input.toLowerCase();
+  const searchedInput = input?.toLowerCase();
 
   recipesToShow.forEach((el) => {
     const recipe = recipes.find((recipe) => recipe.id === el);
