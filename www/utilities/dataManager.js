@@ -182,7 +182,7 @@ function filterRecipesFromTags(recipeIds) {
  * - calls function to filter recipes from current input if the input is at least 3 letters long
  * - calls function to filter recipes from current filters
  * Then it applies and returns recipes to show (filtered or initial recipes).
- * @return  {Array}  
+ * @return  {Array}
  */
 function getFilteredRecipes() {
   let updatedRecipes = [];
@@ -204,7 +204,7 @@ function getFilteredRecipes() {
  * @description
  * For each current filtered recipes :
  *  - depending on category, searches input in the category
- *  - if there is a match or if there was no input,
+ *  - if there is a match or if there was no input, and if the filter isn't already selected,
  *  the category's elements are pushed in an array
  * @param   {String}  category  dropdown category
  * @param   {String}  input
@@ -218,20 +218,29 @@ function getSuggestions(category, input) {
     const recipe = recipes.find((recipe) => recipe.id === el);
     switch (category) {
       case "appliance":
-        if (!searchedInput || getIsInString(searchedInput, recipe.appliance)) {
+        if (
+          (!searchedInput || getIsInString(searchedInput, recipe.appliance)) &&
+          !checkIfIsInFilters(recipe.appliance, category)
+        ) {
           suggestions.push(recipe.appliance);
         }
         break;
       case "ustensils":
         recipe.ustensils.forEach((ustensil) => {
-          if (!searchedInput || getIsInString(searchedInput, ustensil)) {
+          if (
+            (!searchedInput || getIsInString(searchedInput, ustensil)) &&
+            !checkIfIsInFilters(ustensil, category)
+          ) {
             suggestions.push(ustensil);
           }
         });
         break;
       case "ingredients":
         recipe.ingredients.forEach((el) => {
-          if (!searchedInput || getIsInString(searchedInput, el.ingredient)) {
+          if (
+            (!searchedInput || getIsInString(searchedInput, el.ingredient)) &&
+            !checkIfIsInFilters(el.ingredient, category)
+          ) {
             suggestions.push(el.ingredient);
           }
         });
@@ -240,6 +249,19 @@ function getSuggestions(category, input) {
   });
 
   return new Set(suggestions);
+}
+
+function checkIfIsInFilters(elementToCheck, category) {
+  let isMatch = false;
+  filters.some((filter) => {
+    if (
+      filter[0].toLowerCase() === elementToCheck.toLowerCase() &&
+      filter[1] === category
+    ) {
+      isMatch = true;
+    }
+  });
+  return isMatch;
 }
 
 export {
