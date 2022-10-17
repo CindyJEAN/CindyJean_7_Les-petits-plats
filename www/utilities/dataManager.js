@@ -265,13 +265,11 @@ function checkIfIsInFilters(elementToCheck, category) {
 }
 
 export {
-  initData,
   getRecipeById,
   dropdowns,
   translate,
   removeFilter,
   addFilter,
-  filterRecipesFromInput,
   initialRecipes,
   getSuggestions,
   getFilteredRecipes,
