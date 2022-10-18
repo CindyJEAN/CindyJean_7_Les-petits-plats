@@ -74,8 +74,8 @@ function filterRecipesFromInput() {
   const updatedRecipes = [];
   const searchedString = searchInput.toLowerCase();
 
-  // V1 (foreach)
-  recipes.forEach((recipe) => {
+  for (let i = 0; i < recipes.length; i++) {
+    const recipe = recipes[i];
     const isInName = getIsInString(searchedString, recipe.name);
     if (isInName) {
       updatedRecipes.push(recipe.id);
@@ -88,42 +88,17 @@ function filterRecipesFromInput() {
       }
 
       if (!isInDescription) {
-        const isInIngredients = recipe.ingredients.some((element) => {
-          return getIsInString(searchedString, element.ingredient);
-        });
-        if (isInIngredients) {
-          updatedRecipes.push(recipe.id);
+        for (let j = 0; j < recipe.ingredients.length; j++) {
+          const ingredient = recipe.ingredients[j].ingredient;
+          const isInIngredient = getIsInString(searchedString, ingredient);
+          if (isInIngredient) {
+            updatedRecipes.push(recipe.id);
+            break;
+          }
         }
       }
     }
-  });
-
-  // V2 (for loop)
-  // for (let i = 0; i < recipes.length; i++) {
-  //   const recipe = recipes[i];
-  //   const isInName = getIsInString(searchedString, recipe.name);
-  //   if (isInName) {
-  //     updatedRecipes.push(recipe.id);
-  //   }
-
-  //   if (!isInName) {
-  //     const isInDescription = getIsInString(searchedString, recipe.description);
-  //     if (isInDescription) {
-  //       updatedRecipes.push(recipe.id);
-  //     }
-
-  //     if (!isInDescription) {
-  //       for (let j = 0; j < recipe.ingredients.length; j++) {
-  //         const ingredient = recipe.ingredients[j].ingredient;
-  //         const isInIngredient = getIsInString(searchedString, ingredient);
-  //         if (isInIngredient) {
-  //           updatedRecipes.push(recipe.id);
-  //           break;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+  }
 
   return updatedRecipes;
 }
