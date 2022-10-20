@@ -1,8 +1,9 @@
 article.recipe {
   display: grid;
-  width: 30%;
+  width: 100%;
+  max-width: 400px;
   height: 350px;
-  margin-bottom: 3rem;
+  margin: auto;
   border-radius: 5px;
   background-color: $grey;
   grid-template-areas:
@@ -12,6 +13,16 @@ article.recipe {
   grid-template-columns: 40% auto 125px;
   grid-template-rows: min-content min-content auto;
   padding-bottom: 1rem;
+  overflow: hidden;
+
+  @include tablet {
+    width: 47%;
+    margin: 0;
+  }
+
+  @include desktop {
+    width: 31%;
+  }
 
   .photo {
     width: 100%;

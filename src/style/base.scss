@@ -3,10 +3,24 @@ $colorAppliance: #68d9a4;
 $colorUstensil: #ed6454;
 $grey: #e7e7e7;
 $darkGrey: #c7bebe;
+$breakpoints: (
+  tablet: 768px,
+  desktop: 1024px,
+  largeDesktop: 1440px,
+);
+
+@mixin tablet {
+  @media screen and (min-width: map-get($breakpoints, tablet)) {@content}
+};
+@mixin desktop {
+    @media screen and (min-width: map-get($breakpoints, desktop)) {@content}
+};
+@mixin largeDesktop {
+    @media screen and (min-width: map-get($breakpoints, largeDesktop)) {@content}
+};
 
 body {
   max-width: 1280px;
-  min-width: 1000px;
   width: 90vw;
   margin: auto;
 
@@ -27,12 +41,6 @@ h1 {
   font-weight: bold;
 }
 
-main {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 5%;
-}
-
 button,
 input,
 fieldset {
@@ -41,8 +49,9 @@ fieldset {
 }
 
 .container {
-  width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   max-width: 100%;
 }
 

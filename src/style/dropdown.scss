@@ -1,9 +1,13 @@
 .dropdown {
   border-radius: 5px;
-  margin-right: 1rem;
-  margin-bottom: 2rem;
   position: relative;
   height: fit-content;
+  z-index: 3;
+  width: 100%;
+  
+  @include desktop {
+    width: auto;
+  }
 
   .hidden {
     border: 0;
@@ -25,12 +29,26 @@
 
     * {
       color: white;
-      font-size: 1.125rem;
+      font-size: 1rem;
+      
+      @include tablet {
+        font-size: 1.125rem;
+      }
     }
 
     input {
-      padding: 1.5rem 1rem;
-      width: 100px;
+      padding: 1rem 0.5rem;
+      width: 100%;
+      
+      @include tablet {
+        padding: 1.5rem 1rem;
+
+      }
+
+      @include desktop {
+        width: 100px;
+
+      }
 
       &::placeholder {
         color: white;
@@ -62,6 +80,8 @@
 }
 
 .dropdown.open {
+  z-index: 4;
+
   ::placeholder {
     opacity: 0.8;
   }
@@ -71,35 +91,55 @@
   }
 
   input {
-    width: 500px;
+    @include desktop {
+      width: 400px;
+    }
+    @include largeDesktop {
+      width: 500px;
+      
+    }
   }
 }
 
 .dropdownExpansion {
   position: absolute;
+  z-index: 5;
   margin-top: -10px;
-  width: calc(100% - 2rem);
+  width: calc(100% - 1.2rem);
   display: grid;
   justify-content: space-between;
   align-items: flex-start;
-
+  
   border-radius: 0 0 5px 5px;
   grid-template-columns: 33% 33% 30%;
   justify-items: flex-start;
-  padding: 0.5rem 1rem;
-
+  padding: 0.5rem 0.6rem;
+  
   max-height: 300px;
   overflow-y: auto;
-
+  
+  @include tablet {
+    width: calc(100% - 2rem);
+    padding: 0.5rem 1rem;
+    
+  }
+  
   button {
-    font-size: 1.125rem;
+    font-size: 1rem;
     color: white;
     padding: 0;
     margin-bottom: 0.8rem;
     text-align: start;
     cursor: pointer;
+
+    @include tablet {
+      font-size: 1.125rem;
+  
+    }
   }
 }
+
+
 
 #appliance {
   background-color: $colorAppliance;
@@ -119,3 +159,5 @@
     background-color: $colorUstensil;
   }
 }
+
+

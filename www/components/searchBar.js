@@ -1,8 +1,8 @@
 import { updateRecipeCards } from "../pages/index.js";
 import { applyInput, getFilteredRecipes } from "../utilities/dataManager.js";
 import { renderNoMatchText } from "./recipe.js";
-
-const main = document.querySelector("main");
+const initialPlaceholder =
+  "Rechercher un ingrédient, appareil, ustensile ou une recette";
 
 /**
  * @param   {HTMLElement}  domTarget
@@ -11,6 +11,8 @@ const main = document.querySelector("main");
 function renderSearchBar(domTarget) {
   const searchBar = document.createElement("form");
   searchBar.className = "searchBar";
+  const width = document.documentElement.clientWidth;
+  const placeholder = getPlaceholder(width);
 
   searchBar.innerHTML = `	
   <label for="recipeSearch" hidden></label>
@@ -18,10 +20,11 @@ function renderSearchBar(domTarget) {
 		type="search"
 		id="searchBar"
 		name="recipeSearch"
-		placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette"
+		placeholder=""
 	/>
   <div></div>
   `;
+  searchBar.querySelector("input").placeholder = placeholder;
 
   domTarget.appendChild(searchBar);
 }
@@ -39,6 +42,10 @@ function renderSearchBar(domTarget) {
  */
 function handleSearchBarInput(e) {
   /**
+   * @param   {HTMLElement}  recipesContainer  [recipesContainer description]
+   */
+  const recipesContainer = document.querySelector("#recipesContainer");
+  /**
    * @type   {HTMLInputElement}
    */
   const searchBar = document.querySelector("#searchBar");
@@ -53,9 +60,39 @@ function handleSearchBarInput(e) {
   const filteredRecipes = getFilteredRecipes();
 
   if (!filteredRecipes.length) {
-    renderNoMatchText(main);
+    // @ts-ignore
+    renderNoMatchText(recipesContainer);
   }
   updateRecipeCards(filteredRecipes);
 }
 
 export { renderSearchBar, handleSearchBarInput };
+
+window.addEventListener("resize", (event) => {
+  const width = document.documentElement.clientWidth;
+
+  /**
+   * @type  {HTMLInputElement}              [return description]
+   */
+  const searchBar = document.querySelector("#searchBar");
+  searchBar.placeholder = getPlaceholder(width);
+});
+
+/**
+ * getSearchBar placeholder depending on 
+ *
+ * @param   {Number}  width  window width
+ * @return  {String}         placeholder
+ */
+function getPlaceholder(width) {
+  let updatedPlaceholder = "";
+  if (width >= 480) {
+    updatedPlaceholder = initialPlaceholder;
+  } else if (width >= 380) {
+    updatedPlaceholder = initialPlaceholder.slice(0, 45) + "...";
+  } else {
+    updatedPlaceholder = initialPlaceholder.slice(0, 34) + "...";
+  }
+
+  return updatedPlaceholder;
+}

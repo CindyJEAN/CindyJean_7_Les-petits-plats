@@ -1,0 +1,50 @@
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#filtersContainer {
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  margin-bottom: 1rem;
+  
+  @include tablet {
+    column-gap: 1rem;
+    row-gap: 1rem;
+  }
+  
+  &.empty {
+    margin-bottom: 0;
+  }
+}
+
+#dropdownsContainer {
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+
+  @include tablet {
+    row-gap: 1rem;
+  }
+
+  @include desktop {
+    row-gap: 2rem;
+  }
+}
+
+#recipesContainer {
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  row-gap: 1rem;
+  
+  @include tablet {
+    row-gap: 3rem;
+  }
+
+  @include desktop {
+    &::after {
+      content: "";
+      width: 31%;
+    }
+  }
+}

@@ -8,15 +8,21 @@ import { renderDropdownExpansion } from "./dropdown.js";
  * @return  {Void}
  */
 function renderFilter(domTarget, filter) {
+  const container = document.querySelector("#filtersContainer");
   const element = document.createElement("button");
   element.className = "filter";
   element.innerText = filter[0];
   element.classList.add(filter[1]);
+  domTarget.classList.remove("empty");
 
   //--- removing filter on click
   element.onclick = () => {
     removeFilter(filter);
     element.remove();
+    const isContainerEmpty = !container.querySelector("button");
+    if (isContainerEmpty) {
+      domTarget.classList.add("empty");
+    }
 
     updateRecipeCards(getFilteredRecipes());
 

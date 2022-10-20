@@ -1,5 +1,4 @@
 import { getRecipeById, initialRecipes } from "../utilities/dataManager.js";
-import { recipes } from "../content/recipes.js";
 import { renderRecipe } from "../components/recipe.js";
 import { renderSearchBar } from "../components/searchBar.js";
 import { renderDropdown } from "../components/dropdown.js";
@@ -13,7 +12,7 @@ renderSearchBar(main);
 
 // --- rendering filters --- //
 const filtersContainer = document.createElement("div");
-filtersContainer.className = "container";
+filtersContainer.className = "container empty";
 filtersContainer.id = "filtersContainer";
 
 main.appendChild(filtersContainer);
@@ -21,6 +20,7 @@ main.appendChild(filtersContainer);
 // --- rendering dropdowns --- //
 const dropdownsContainer = document.createElement("form");
 dropdownsContainer.className = "container";
+dropdownsContainer.id = "dropdownsContainer";
 
 main.appendChild(dropdownsContainer);
 for (const dropdown of dropdowns) {
@@ -28,8 +28,13 @@ for (const dropdown of dropdowns) {
 }
 
 // --- rendering recipes --- //
+const recipesContainer = document.createElement("div");
+recipesContainer.className = "container";
+recipesContainer.id = "recipesContainer";
+
+main.appendChild(recipesContainer);
 for (const recipe of initialRecipes) {
-  renderRecipe(main, getRecipeById(recipe));
+  renderRecipe(recipesContainer, getRecipeById(recipe));
 }
 
 // ----- functions ----- //
@@ -47,7 +52,7 @@ function updateRecipeCards(recipesToShow) {
     articles.forEach((article) => article.remove());
   }
   for (const recipeId of recipesToShow) {
-    renderRecipe(main, getRecipeById(recipeId));
+    renderRecipe(recipesContainer, getRecipeById(recipeId));
   }
 }
 
